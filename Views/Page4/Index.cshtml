@@ -1,0 +1,129 @@
+@{
+  ViewData["Title"] = "Customer List";
+  Layout = "_ContentNavbarLayout"; // Use your layout path
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+  <h4 class="fw-bold py-3 mb-4">Customer List</h4>
+
+  <!-- Stats Cards -->
+  <div class="row mb-4">
+    <div class="col-md-3">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">Customers</h5>
+          <h3>143</h3>
+          <small>Total Number</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">Not Satisfied</h5>
+          <h3>40</h3>
+          <small>Total Number</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">Satisfied</h5>
+          <h3>46</h3>
+          <small>Total Number</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">No Record</h5>
+          <h3>57</h3>
+          <small>Total Number</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filters -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <form class="row g-3">
+        <div class="col-md-4">
+          <select class="form-select">
+            <option selected>Select Classification</option>
+            <option>A Customer</option>
+            <option>B Customer</option>
+            <option>C Customer</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <select class="form-select">
+            <option selected>Select Satisfaction Level</option>
+            <option>Satisfied</option>
+            <option>Not Satisfied</option>
+            <option>No Record</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <input type="date" class="form-control" placeholder="Evaluation Date" />
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Table + Actions -->
+  <div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <input type="text" class="form-control w-25" placeholder="Search Customer" />
+      <div>
+        <button class="btn btn-outline-secondary me-2">Export</button>
+        <a href="#" class="btn btn-primary">+ Add New Customer</a>
+      </div>
+    </div>
+
+    <div class="table-responsive text-nowrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Customer</th>
+            <th>Classification</th>
+            <th>Contact</th>
+            <th>Email</th>
+            <th>Satisfaction</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Sample Row -->
+          <tr>
+            <td><input type="checkbox" /></td>
+            <td>
+              <div class="d-flex align-items-center">
+                <img src="https://i.pravatar.cc/40" class="rounded-circle me-2" width="40" />
+                <div>
+                  <strong>Aski Interior Group</strong><br />
+                  <small>551894187</small>
+                </div>
+              </div>
+            </td>
+            <td><span class="badge bg-success">A Customer</span></td>
+            <td>Kalle Karlsson</td>
+            <td>info@e-post.com</td>
+            <td><span class="badge bg-label-success">Satisfied</span></td>
+            <td>
+              <button class="btn btn-icon btn-sm btn-outline-secondary"><i class="bx bx-globe"></i></button>
+              <button class="btn btn-icon btn-sm btn-outline-secondary"><i class="bx bx-trash"></i></button>
+              <button class="btn btn-icon btn-sm btn-outline-secondary"><i class="bx bx-show"></i></button>
+              <button class="btn btn-icon btn-sm btn-outline-secondary"><i
+                  class="bx bx-dots-vertical-rounded"></i></button>
+            </td>
+          </tr>
+          <!-- Repeat for other customers -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

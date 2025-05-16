@@ -1,0 +1,205 @@
+@{
+  Layout = null;
+}
+
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Kvalitetgruppen</title>
+  <link rel="stylesheet" href="~/css/style.css"> <!-- Custom CSS -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      /* Increased base font size */
+    }
+
+    .login-container {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+      width: 420px;
+      /* Wider container */
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #7367F0;
+      margin-bottom: 15px;
+    }
+
+    .login-container h2 {
+      font-size: 26px;
+      margin-bottom: 12px;
+    }
+
+    .login-container p {
+      color: #666;
+      font-size: 16px;
+      margin-bottom: 25px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin: 10px 0;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .input-group {
+      position: relative;
+    }
+
+    .input-group i {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .remember-me {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 15px 0;
+    }
+
+    .remember-me label {
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      white-space: nowrap;
+    }
+
+    .remember-me input[type="checkbox"] {
+      margin-right: 8px;
+      transform: scale(1.2);
+      /* Slightly larger checkbox */
+    }
+
+    .remember-me a {
+      text-decoration: none;
+      color: #7367F0;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background-color: #7367F0;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    button:hover {
+      background-color: #5a54df;
+    }
+
+    .create-account {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    .create-account a {
+      text-decoration: none;
+      color: #7367F0;
+    }
+
+    .social-login {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .social-login a {
+      display: inline-block;
+      font-size: 22px;
+      color: #555;
+    }
+
+    .social-login a:hover {
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-container">
+    <div class="logo">Quality Works</div>
+    <h2>Welcome to Kvalitetgruppen! 👋</h2>
+    <p>Please sign-in to your account and start the adventure</p>
+
+    @if (ViewData["ErrorMessage"] != null)
+    {
+      <p style="color: red;">@ViewData["ErrorMessage"]</p>
+    }
+
+    <form method="post" action="/Account/Login">
+      <input type="text" name="username" placeholder="Email or Username" required />
+
+      <div class="input-group">
+        <input type="password" name="password" placeholder="Password" id="password" required />
+        <i class="fas fa-eye" id="togglePassword"></i>
+      </div>
+
+      <div class="remember-me">
+        <label>
+          <input type="checkbox" name="remember" /> Remember Me
+        </label>
+        <a href="#">Forgot Password?</a>
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <div class="create-account">
+      New on our platform? <a href="#">Create an account</a>
+    </div>
+
+    <div class="social-login">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-google"></i></a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("togglePassword").addEventListener("click", function () {
+      let passwordField = document.getElementById("password");
+      if (passwordField.type === "password") {
+        passwordField.type = "text";
+        this.classList.replace("fa-eye", "fa-eye-slash");
+      } else {
+        passwordField.type = "password";
+        this.classList.replace("fa-eye-slash", "fa-eye");
+      }
+    });
+  </script>
+
+</body>
+
+</html>

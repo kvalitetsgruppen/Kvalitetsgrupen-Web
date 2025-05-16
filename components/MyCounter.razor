@@ -1,0 +1,12 @@
+@code {
+    private int count = 0;
+
+    private void IncrementCount()
+    {
+        count++;
+    }
+}
+
+<h3>Counter</h3>
+<p>Current Count: @count</p>
+<button @onclick="IncrementCount">Increment</button>
