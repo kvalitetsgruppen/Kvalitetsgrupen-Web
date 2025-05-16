@@ -14,17 +14,17 @@ public class AccountController : Controller
   [HttpPost]
   public IActionResult Login(string username, string password)
   {
-    Console.WriteLine($"Username: {username}, Password: {password}");
+    //Console.WriteLine($"Username: {username}, Password: {password}");
 
     if (DatabaseHelper.ValidateUser(username, password))
     {
-      Console.WriteLine("Right credentials");
+      //Console.WriteLine("Right credentials");
       HttpContext.Session.SetString("User", username);
       return RedirectToAction("Welcome"); // go to welcome page
     }
     else
     {
-      Console.WriteLine("Wrong credentials");
+      //Console.WriteLine("Wrong credentials");
       ViewData["ErrorMessage"] = "Invalid username or password!";
       return RedirectToAction("Index", "Page2"); // This stays on the login page and shows the error
     }

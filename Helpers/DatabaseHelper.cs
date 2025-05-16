@@ -22,7 +22,8 @@ namespace AspnetCoreMvcStarter.Helpers
         using (MySqlConnection conn = new MySqlConnection(GetConnectionString()))
         {
           conn.Open();
-          string query = "SELECT COUNT(1) FROM login WHERE Username = @Username AND Password = @Password";
+          //string query = "SELECT COUNT(1) FROM login WHERE Username = @Username AND Password = @Password";
+          string query = "SELECT COUNT(1) FROM secure WHERE Username = @Username AND Password = @Password";
           MySqlCommand cmd = new MySqlCommand(query, conn);
           cmd.Parameters.AddWithValue("@Username", username);
           cmd.Parameters.AddWithValue("@Password", password);

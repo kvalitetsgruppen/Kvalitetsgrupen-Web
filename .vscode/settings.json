@@ -51,21 +51,6 @@
       "server": "192.168.0.214",
       "port": 3308,
       "driver": "MariaDB",
-      "name": "Temp",
-      "database": "qw",
-      "username": "Sudipta",
-      "password": "sudipta",
-      "connectionTimeout": 30
-    },
-    {
-      "mysqlOptions": {
-        "authProtocol": "default",
-        "enableSsl": "Disabled"
-      },
-      "previewLimit": 50,
-      "server": "192.168.0.214",
-      "port": 3308,
-      "driver": "MariaDB",
       "name": "Test-1",
       "database": "qw",
       "username": "Viorica",
@@ -84,6 +69,21 @@
       "name": "test-con",
       "database": "users",
       "username": "root"
+    },
+    {
+      "mysqlOptions": {
+        "authProtocol": "default",
+        "enableSsl": "Disabled"
+      },
+      "previewLimit": 50,
+      "server": "192.168.0.214",
+      "port": 3308,
+      "driver": "MariaDB",
+      "name": "Temp",
+      "database": "qw",
+      "username": "Sudipta",
+      "password": "sudipta",
+      "connectionTimeout": 30
     }
   ],
 }

@@ -11,33 +11,50 @@
   ViewData["isMenu"] = (ViewData["isMenu"] ??= true);
   ViewData["isFlex"] = (ViewData["isFlex"] ??= false);
   ViewData["isFooter"] = (ViewData["isFooter"] ??= true);
-  @* ViewData["customizerHidden"] = (ViewData["customizerHidden"] ??= "customizer-hide"); *@
 
-
-  @*HTML Classes *@
+  @* HTML Classes *@
   ViewData["navbarDetached"] = (ViewData["navbarDetached"] ?? "navbar-detached");
   ViewData["menuFixed"] = (ViewData["menuFixed"] ?? "layout-menu-fixed");
   ViewData["navbarType"] = (ViewData["navbarType"] ?? "layout-navbar-fixed");
 
-  @*Content classes *@
+  @* Content classes *@
   ViewData["container"] = (ViewData["container"] ?? "container-xxl");
   ViewData["containerNav"] = (ViewData["containerNav"] ?? "container-xxl");
 }
 
-@section VendorStyles{ @RenderSection("VendorStyles", required: false) }
+@section VendorStyles {
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  @RenderSection("VendorStyles", required: false)
+}
 
-@section PageStyles{ @RenderSection("PageStyles", required: false) }
+@section PageStyles {
+  @RenderSection("PageStyles", required: false)
+}
 
-@section VendorScripts{ @RenderSection("VendorScripts", required: false) }
+@section VendorScripts {
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  @RenderSection("VendorScripts", required: false)
+}
 
-@section PageScripts{ @RenderSection("PageScripts", required: false) }
+@section PageScripts {
+  @RenderSection("PageScripts", required: false)
+  <script>
+    // Programmatically open the offcanvas
+    function openOffcanvas() {
+      var offcanvas = new bootstrap.Offcanvas(document.getElementById('addCustomerOffcanvas'));
+      offcanvas.show();
+    }
+  </script>
+}
 
 @{
   bool isMenu = ViewData["isMenu"] != null && Convert.ToBoolean(ViewData["isMenu"]);
 }
 
-<div class='layout-wrapper layout-content-navbar @(isMenu ? "" : "layout-without-menu")'>
-  <div class='layout-container'>
+<div class="layout-wrapper layout-content-navbar @(isMenu ? "" : "layout-without-menu")">
+  <div class="layout-container">
 
     @if (isMenu)
     {
@@ -53,12 +70,84 @@
       }
       <!-- / Navbar -->
 
-
       <!-- Content wrapper -->
       <div class="content-wrapper">
+        <!-- Offcanvas Trigger Button
+                <div class="p-3">
+                    <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#addCustomerOffcanvas" role="button">
+                        + Add New Customer
+                    </a>
+                </div>-->
+
+        <!-- Offcanvas Structure -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="addCustomerOffcanvas" aria-labelledby="addCustomerLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="addCustomerLabel">Add New Customer</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <form asp-action="AddCustomer" method="post" class="d-flex flex-column gap-3">
+              <div>
+                <label class="form-label">Customer Name</label>
+                <input type="text" class="form-control" name="CustomerName" placeholder="Enter Customer Name"
+                  required />
+              </div>
+              <div>
+                <label class="form-label">Customer ID</label>
+                <input type="text" class="form-control" name="CustomerID" placeholder="Enter Customer ID" required />
+              </div>
+              <div>
+                <label class="form-label">Contact Person</label>
+                <input type="text" class="form-control" name="ContactPerson" placeholder="Enter Contact Person" />
+              </div>
+              <div>
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" name="Email" placeholder="Enter Email" />
+              </div>
+              <div>
+                <label class="form-label">Website</label>
+                <input type="url" class="form-control" name="Website" placeholder="Enter Website" />
+              </div>
+              <div>
+                <label class="form-label">Classification</label>
+                <select class="form-select" name="Classification">
+                  <option selected disabled>Choose...</option>
+                  <option value="A Customer">A Customer</option>
+                  <option value="B Customer">B Customer</option>
+                  <option value="C Customer">C Customer</option>
+                  <option value="D Customer">D Customer</option>
+                  <option value="Not Active">Not Active</option>
+                  <option value="Prospect">Prospect</option>
+                </select>
+              </div>
+              <div>
+                <label class="form-label">Satisfaction Level</label>
+                <select class="form-select" name="SatisfactionLevel">
+                  <option selected disabled>Select...</option>
+                  <option value="Satisfied">Satisfied</option>
+                  <option value="Not Satisfied">Not Satisfied</option>
+                  <option value="No Record">No Record</option>
+                </select>
+              </div>
+              <div>
+                <label class="form-label">Evaluation Date</label>
+                <input type="date" class="form-control" name="EvaluationDate" />
+              </div>
+              <div class="d-flex justify-content-end gap-2 mt-4">
+                <button type="submit" class="btn" style="background-color:#5C7CFA; color:white;">Submit</button>
+                <button type="button" class="btn" style="background-color: #FFE4E6; color: #FF0000;"
+                  data-bs-dismiss="offcanvas">Cancel</button>
+
+              </div>
+
+            </form>
+          </div>
+
+        </div>
 
         <!-- Content -->
-        <div class='@ViewData["container"] @(Convert.ToBoolean(@ViewData["isFlex"]) ? "d-flex align-items-stretch flex-grow-1 p-0" : "flex-grow-1 container-p-y")'>
+        <div
+          class='@ViewData["container"] @(Convert.ToBoolean(@ViewData["isFlex"]) ? "d-flex align-items-stretch flex-grow-1 p-0" : "flex-grow-1 container-p-y")'>
           @RenderBody()
         </div>
         <!-- / Content -->
@@ -81,6 +170,6 @@
   {
     <div class="layout-overlay layout-menu-toggle"></div>
   }
-  <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+  <!-- Drag Target Area for SlideIn Menu on Small Screens -->
   <div class="drag-target"></div>
 </div>

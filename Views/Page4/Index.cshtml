@@ -56,6 +56,9 @@
             <option>A Customer</option>
             <option>B Customer</option>
             <option>C Customer</option>
+            <option>D Customer</option>
+            <option>Not Active</option>
+            <option>Prospect</option>
           </select>
         </div>
         <div class="col-md-4">
@@ -67,7 +70,17 @@
           </select>
         </div>
         <div class="col-md-4">
-          <input type="date" class="form-control" placeholder="Evaluation Date" />
+          <select class="form-select">
+            <option selected> Select Evaluation Date</option>
+            <option>Last 3 months</option>
+            <!-- <input type="date" class="form-control" placeholder="Evaluation Date" />-->
+            <option>Last 6 months</option>
+            <option>This Year</option>
+            <option>Last year</option>
+            <option>Last 3 years</option>
+            <option>All years </option>
+            <option>No evaluation date </option>
+          </select>
         </div>
       </form>
     </div>
@@ -79,7 +92,10 @@
       <input type="text" class="form-control w-25" placeholder="Search Customer" />
       <div>
         <button class="btn btn-outline-secondary me-2">Export</button>
-        <a href="#" class="btn btn-primary">+ Add New Customer</a>
+
+        <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#addCustomerOffcanvas" role="button">
+    + Add New Customer
+        </a>
       </div>
     </div>
 

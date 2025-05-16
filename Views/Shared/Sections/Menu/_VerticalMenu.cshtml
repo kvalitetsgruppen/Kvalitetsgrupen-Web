@@ -33,27 +33,100 @@
     <li class='menu-item@(currentPage == "/" ? " active" : "")'>
       <a asp-controller="Home" asp-action="Index" class="menu-link">
         <i class="menu-icon tf-icons bx bx-home-smile"></i>
-        <div data-i18n="Page 1">Page 1</div>
+        <div data-i18n="Start">Start</div>
       </a>
     </li>
     <li class='menu-item@(currentPage == "/Page2" ? " active" : "")'>
-      <a asp-controller="Page2" asp-action="Index" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-detail"></i>
-        <div data-i18n="Page 2">Page 2</div>
+      <a asp-controller="Page2" asp-action="Index" class="menu-link d-flex align-items-center">
+        <i class="menu-icon tf-icons bx bx-detail me-2"></i>
+        <div data-i18n="Login" class="menu-text">Login</div>
       </a>
     </li>
+
     <li class='menu-item@(currentPage == "/Page3" ? " active" : "")'>
-      <a asp-controller="Page3" asp-action="Index" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-detail"></i>
-        <div data-i18n="Page 3">Page 3</div>
+      <a asp-controller="Page3" asp-action="Index" class="menu-link d-flex align-items-center">
+        <i class="menu-icon tf-icons bx bx-book me-2"></i> <!-- Book Icon -->
+        <div data-i18n="Manual">Manual</div>
       </a>
     </li>
+
+
+    <li class='menu-item@(currentPage == "/DocumentList" ? " active" : "") toggle-visibility'>
+      <a asp-controller="DocumentList" asp-action="Index" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-detail"></i>
+        <div data-i18n="Document List">Document List</div>
+      </a>
+    </li>
+    <li class='menu-item@(currentPage == "/FileExplorer" ? " active" : "") toggle-visibility'>
+      <a asp-controller="FileExplorer" asp-action="Index" class="menu-link d-flex align-items-center">
+        <i class="menu-icon tf-icons bx bx-envelope-open me-2"></i> <!-- Open Envelope Icon -->
+        <div data-i18n="File Explorer">File Explorer</div>
+      </a>
+    </li>
+
+    <li class='menu-item@(currentPage == "/People" ? " active" : "")'>
+      <a asp-controller="People" asp-action="Index" class="menu-link d-flex align-items-center">
+        <i class="menu-icon tf-icons bx bx-group me-2"></i> <!-- People Icon -->
+        <div data-i18n="People">People</div>
+      </a>
+    </li>
+
+
+    <li class="menu-header small text-uppercase toggle-visibility" style="color: gray;">
+      <span class="menu-header-text" data-i18n="Apps">Apps</span>
+    </li>
+
+    <li class='menu-item@(currentPage == "/Incident" ? " active" : "")'>
+      <a asp-controller="Incident" asp-action="Index" class="menu-link d-flex align-items-center">
+        <i class="menu-icon tf-icons bx bx-error me-2"></i> <!-- Triangle with Exclamation Icon -->
+        <div data-i18n="Incident">Incident</div>
+      </a>
+    </li>
+
+    <li class='menu-item@(currentPage == "/ListofLaws" ? " active" : "")'>
+      <a asp-controller="ListofLaws" asp-action="Index" class="menu-link d-flex align-items-center">
+        <i class="menu-icon tf-icons bx bx-notepad me-2"></i> <!-- Notebook Icon -->
+        <div data-i18n="List of Laws">List of Laws</div>
+      </a>
+    </li>
+
+    <li class='menu-item@(currentPage == "/Suppliers" ? " active" : "")'>
+      <a asp-controller="Suppliers" asp-action="Index" class="menu-link d-flex align-items-center">
+        <i class="menu-icon tf-icons bx bx-package me-2"></i> <!-- Package Box Icon -->
+        <div data-i18n="Suppliers">Suppliers</div>
+      </a>
+    </li>
+
+
+
+
     <li class='menu-item@(currentPage == "/Page4" ? " active" : "")'>
-      <a asp-controller="Page4" asp-action="Index" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-detail"></i>
-        <div data-i18n="Page 4">Page 4</div>
+      <a asp-controller="Page4" asp-action="Index" class="menu-link d-flex align-items-center">
+        <i class="menu-icon tf-icons bx bx-group me-2"></i> <!-- People Icon -->
+        <div data-i18n="Customers">Customers</div>
       </a>
     </li>
+
+
+    <li class="menu-header small text-uppercase toggle-visibility" style="color: gray;">
+      <span class="menu-header-text" data-i18n="SETTINGS">SETTINGS</span>
+    </li>
+
+    <li class='menu-item@(currentPage == "/RolesPermission" ? " active" : "")'>
+      <a asp-controller="RolesPermission" asp-action="Index" class="menu-link d-flex align-items-center">
+        <i class="menu-icon tf-icons bx bx-key me-2"></i> <!-- Key Icon -->
+        <div data-i18n="Roles & Permission">Roles & Permission</div>
+      </a>
+    </li>
+
+    <li class='menu-item@(currentPage == "/Company" ? " active" : "")'>
+      <a asp-controller="Company" asp-action="Index" class="menu-link d-flex align-items-center">
+        <i class="menu-icon tf-icons bx bx-buildings me-2"></i> <!-- Office Building Icon -->
+        <div data-i18n="Company">Company</div>
+      </a>
+    </li>
+
+
   </ul>
 
 </aside>
