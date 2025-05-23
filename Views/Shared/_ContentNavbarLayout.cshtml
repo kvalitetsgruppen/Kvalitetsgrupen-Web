@@ -53,123 +53,141 @@
   bool isMenu = ViewData["isMenu"] != null && Convert.ToBoolean(ViewData["isMenu"]);
 }
 
-<div class="layout-wrapper layout-content-navbar @(isMenu ? "" : "layout-without-menu")">
-  <div class="layout-container">
+<!DOCTYPE html>
+<html lang="en">
 
-    @if (isMenu)
-    {
-      @await Html.PartialAsync("Sections/Menu/_VerticalMenu")
-    }
+<head>
+  <meta charset="utf-8" />
+  <title>@ViewData["Title"]</title>
 
-    <!-- Layout page -->
-    <div class="layout-page">
-      <!-- Navbar -->
-      @if (@ViewData["isNavbar"] != null && Convert.ToBoolean(@ViewData["isNavbar"]))
+  @* Vendor & Page Styles *@
+  @RenderSection("VendorStyles", required: false)
+  @RenderSection("PageStyles", required: false)
+
+  @* Add support for child view-defined styles *@
+  @RenderSection("Styles", required: false)
+</head>
+
+<body>
+  <div class="layout-wrapper layout-content-navbar @(isMenu ? "" : "layout-without-menu")">
+    <div class="layout-container">
+
+      @if (isMenu)
       {
-        @await Html.PartialAsync("Sections/Navbar/_Navbar")
+        @await Html.PartialAsync("Sections/Menu/_VerticalMenu")
       }
-      <!-- / Navbar -->
 
-      <!-- Content wrapper -->
-      <div class="content-wrapper">
-        <!-- Offcanvas Trigger Button
-                <div class="p-3">
-                    <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#addCustomerOffcanvas" role="button">
-                        + Add New Customer
-                    </a>
-                </div>-->
-
-        <!-- Offcanvas Structure -->
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="addCustomerOffcanvas" aria-labelledby="addCustomerLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="addCustomerLabel">Add New Customer</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <form asp-action="AddCustomer" method="post" class="d-flex flex-column gap-3">
-              <div>
-                <label class="form-label">Customer Name</label>
-                <input type="text" class="form-control" name="CustomerName" placeholder="Enter Customer Name"
-                  required />
-              </div>
-              <div>
-                <label class="form-label">Customer ID</label>
-                <input type="text" class="form-control" name="CustomerID" placeholder="Enter Customer ID" required />
-              </div>
-              <div>
-                <label class="form-label">Contact Person</label>
-                <input type="text" class="form-control" name="ContactPerson" placeholder="Enter Contact Person" />
-              </div>
-              <div>
-                <label class="form-label">Email</label>
-                <input type="email" class="form-control" name="Email" placeholder="Enter Email" />
-              </div>
-              <div>
-                <label class="form-label">Website</label>
-                <input type="url" class="form-control" name="Website" placeholder="Enter Website" />
-              </div>
-              <div>
-                <label class="form-label">Classification</label>
-                <select class="form-select" name="Classification">
-                  <option selected disabled>Choose...</option>
-                  <option value="A Customer">A Customer</option>
-                  <option value="B Customer">B Customer</option>
-                  <option value="C Customer">C Customer</option>
-                  <option value="D Customer">D Customer</option>
-                  <option value="Not Active">Not Active</option>
-                  <option value="Prospect">Prospect</option>
-                </select>
-              </div>
-              <div>
-                <label class="form-label">Satisfaction Level</label>
-                <select class="form-select" name="SatisfactionLevel">
-                  <option selected disabled>Select...</option>
-                  <option value="Satisfied">Satisfied</option>
-                  <option value="Not Satisfied">Not Satisfied</option>
-                  <option value="No Record">No Record</option>
-                </select>
-              </div>
-              <div>
-                <label class="form-label">Evaluation Date</label>
-                <input type="date" class="form-control" name="EvaluationDate" />
-              </div>
-              <div class="d-flex justify-content-end gap-2 mt-4">
-                <button type="submit" class="btn" style="background-color:#5C7CFA; color:white;">Submit</button>
-                <button type="button" class="btn" style="background-color: #FFE4E6; color: #FF0000;"
-                  data-bs-dismiss="offcanvas">Cancel</button>
-
-              </div>
-
-            </form>
-          </div>
-
-        </div>
-
-        <!-- Content -->
-        <div
-          class='@ViewData["container"] @(Convert.ToBoolean(@ViewData["isFlex"]) ? "d-flex align-items-stretch flex-grow-1 p-0" : "flex-grow-1 container-p-y")'>
-          @RenderBody()
-        </div>
-        <!-- / Content -->
-
-        <!-- Footer -->
-        @if (@ViewData["isFooter"] != null && Convert.ToBoolean(@ViewData["isFooter"]))
+      <!-- Layout page -->
+      <div class="layout-page">
+        <!-- Navbar -->
+        @if (@ViewData["isNavbar"] != null && Convert.ToBoolean(@ViewData["isNavbar"]))
         {
-          @await Html.PartialAsync("Sections/Footer/_Footer")
+          @await Html.PartialAsync("Sections/Navbar/_Navbar")
         }
-        <!-- / Footer -->
-        <div class="content-backdrop fade"></div>
+        <!-- / Navbar -->
+
+        <!-- Content wrapper -->
+        <div class="content-wrapper">
+
+          <!-- Offcanvas Structure -->
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="addCustomerOffcanvas"
+            aria-labelledby="addCustomerLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="addCustomerLabel">Add New Customer</h5>
+              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <form asp-action="AddCustomer" method="post" class="d-flex flex-column gap-3">
+                <div>
+                  <label class="form-label">Customer Name</label>
+                  <input type="text" class="form-control" name="CustomerName" placeholder="Enter Customer Name"
+                    required />
+                </div>
+                <div>
+                  <label class="form-label">Customer ID</label>
+                  <input type="text" class="form-control" name="CustomerID" placeholder="Enter Customer ID" required />
+                </div>
+                <div>
+                  <label class="form-label">Contact Person</label>
+                  <input type="text" class="form-control" name="ContactPerson" placeholder="Enter Contact Person" />
+                </div>
+                <div>
+                  <label class="form-label">Email</label>
+                  <input type="email" class="form-control" name="Email" placeholder="Enter Email" />
+                </div>
+                <div>
+                  <label class="form-label">Website</label>
+                  <input type="url" class="form-control" name="Website" placeholder="Enter Website" />
+                </div>
+                <div>
+                  <label class="form-label">Classification</label>
+                  <select class="form-select" name="Classification">
+                    <option selected disabled>Choose...</option>
+                    <option value="A Customer">A Customer</option>
+                    <option value="B Customer">B Customer</option>
+                    <option value="C Customer">C Customer</option>
+                    <option value="D Customer">D Customer</option>
+                    <option value="Not Active">Not Active</option>
+                    <option value="Prospect">Prospect</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="form-label">Satisfaction Level</label>
+                  <select class="form-select" name="SatisfactionLevel">
+                    <option selected disabled>Select...</option>
+                    <option value="Satisfied">Satisfied</option>
+                    <option value="Not Satisfied">Not Satisfied</option>
+                    <option value="No Record">No Record</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="form-label">Evaluation Date</label>
+                  <input type="date" class="form-control" name="EvaluationDate" />
+                </div>
+                <div class="d-flex justify-content-end gap-2 mt-4">
+                  <button type="submit" class="btn" style="background-color:#5C7CFA; color:white;">Submit</button>
+                  <button type="button" class="btn" style="background-color: #FFE4E6; color: #FF0000;"
+                    data-bs-dismiss="offcanvas">Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div
+            class='@ViewData["container"] @(Convert.ToBoolean(@ViewData["isFlex"]) ? "d-flex align-items-stretch flex-grow-1 p-0" : "flex-grow-1 container-p-y")'>
+            @RenderBody()
+          </div>
+          <!-- / Content -->
+
+          <!-- Footer -->
+          @if (@ViewData["isFooter"] != null && Convert.ToBoolean(@ViewData["isFooter"]))
+          {
+            @await Html.PartialAsync("Sections/Footer/_Footer")
+          }
+          <!-- / Footer -->
+          <div class="content-backdrop fade"></div>
+        </div>
+        <!--/ Content wrapper -->
       </div>
-      <!--/ Content wrapper -->
+      <!-- / Layout page -->
     </div>
-    <!-- / Layout page -->
+
+    <!-- Overlay -->
+    @if (@ViewData["isMenu"] != null && Convert.ToBoolean(@ViewData["isMenu"]))
+    {
+      <div class="layout-overlay layout-menu-toggle"></div>
+    }
+    <div class="drag-target"></div>
   </div>
 
-  <!-- Overlay -->
-  @if (@ViewData["isMenu"] != null && Convert.ToBoolean(@ViewData["isMenu"]))
-  {
-    <div class="layout-overlay layout-menu-toggle"></div>
-  }
-  <!-- Drag Target Area for SlideIn Menu on Small Screens -->
-  <div class="drag-target"></div>
-</div>
+  @* Vendor & Page Scripts *@
+  @RenderSection("VendorScripts", required: false)
+  @RenderSection("PageScripts", required: false)
+
+  @* Add support for child view-defined scripts *@
+  @RenderSection("Scripts", required: false)
+</body>
+
+</html>

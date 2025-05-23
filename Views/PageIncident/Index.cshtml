@@ -1,0 +1,336 @@
+@{
+  ViewData["Title"] = "Incident";
+
+}
+
+
+
+@* ************** Content ************** *@
+<!-- Invoice List Widget -->
+
+<div class="card mb-6">
+  <div class="card-widget-separator-wrapper">
+    <div class="card-body card-widget-separator">
+      <div class="row gy-5 gy-sm-1">
+        <p>Filters</p>
+        <div class="col-sm-6 col-lg-2">
+          <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown"
+            aria-expanded="true">Select my cases</button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Case 1</a></li>
+            <li><a class="dropdown-item" href="#">Case 2</a></li>
+            <li><a class="dropdown-item" href="#">Case 3</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-lg-2">
+          <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown"
+            aria-expanded="true">Select Type</button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Type A</a></li>
+            <li><a class="dropdown-item" href="#">Type B</a></li>
+            <li><a class="dropdown-item" href="#">Type C</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-lg-2">
+          <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown"
+            aria-expanded="true">Select Date Range</button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Today</a></li>
+            <li><a class="dropdown-item" href="#">Last 7 Days</a></li>
+            <li><a class="dropdown-item" href="#">This Month</a></li>
+            <li><a class="dropdown-item" href="#">Custom Range</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-lg-2">
+          <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown"
+            aria-expanded="true">Select Status</button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Reported</a></li>
+            <li><a class="dropdown-item" href="#">Pending</a></li>
+            <li><a class="dropdown-item" href="#">Closed</a></li>
+            <li><a class="dropdown-item" href="#">On Hold</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+          <button type="button" class="btn btn-secondary">VIEW AND PRINT CHARTS</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="row gy-5 gy-sm-1">
+    <div class="col-sm-6 col-lg-3">
+      <button type="button" class="btn btn-outline-primary">
+        <span class="tf-icons bx bx-pie-chart-alt bx-18px me-2"></span>Export
+      </button>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+
+    </div>
+    <div class="col-sm-6 col-lg-3">
+      <input type="text" class="form-control" id="defaultFormControlInput" placeholder="Search Incident"
+        aria-describedby="defaultFormControlHelp" />
+    </div>
+
+    <div class="col-sm-6 col-lg-3">
+      <button type="button" id="createIncident" class="btn btn-primary">CREATE INCIDENT</button>
+    </div>
+
+  </div>
+  <div class="card-datatable table-responsive">
+    <table class="invoice-list-table table border-top">
+      <thead>
+        <tr>
+          <th><input type="checkbox" /></th>
+          <th>#</th>
+          <th>TYPE</th>
+          <th>SUBJECT</th>
+          <th>LOCATION</th>
+          <th>CREATED</th>
+          <th>STATUS</th>
+          <th class="cell-fit">ACTIONS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td><a href="@Url.Action("Details", "PageIncident", new { id = 1001 })">#1001</a></td>
+          <td> <span class="badge badge-center rounded-pill bg-success"><i class='bx bx-check'></i></span>
+          </td>
+          <td>Network Outage</td>
+          <td><i class="bx bx-dollar text-primary me-2"></i>Building 1</td>
+          <td>2024-06-01</td>
+          <td><span class="badge bg-warning">Pending</span></td>
+          <td>
+            <div class="d-flex align-items-center">
+              <a href="javascript:;" class="btn btn-icon delete-record"><i class="bx bx-trash bx-md"></i></a>
+              <a href="javascript:;" class="btn btn-icon"><i class="bx bx-show bx-md"></i></a>
+              <a href="javascript:;" class="dropdown-item"><i class="bx bx-edit bx-md"></i></a>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td><a href="@Url.Action("Details", "PageIncident", new { id = 1002 })">#1002</a></td>
+          <td>
+            <span class="badge badge-center rounded-pill bg-warning"><i class='bx bx-pie-chart-alt'></i></span>
+
+          <td>Server Crash</td>
+          <td><i class="bx bx-crown text-primary me-2"></i>Data Center</td>
+          <td>2024-06-02</td>
+          <td><span class="badge bg-success">Closed</span></td>
+          <td>
+            <div class="d-flex align-items-center">
+              <a href="javascript:;" class="btn btn-icon delete-record"><i class="bx bx-trash bx-md"></i></a>
+              <a href="javascript:;" class="btn btn-icon"><i class="bx bx-show bx-md"></i></a>
+              <a href="javascript:;" class="dropdown-item"><i class="bx bx-edit bx-md"></i></a>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>#1003</td>
+          <td> <span class="badge badge-center rounded-pill bg-danger"><i class='bx bx-dollar'></i></span>
+          <td>Email Issue</td>
+          <td><i class="bx bx-pie-chart-alt text-primary me-2"></i>Office 2</td>
+          <td>2024-06-03</td>
+          <td><span class="badge bg-info">Reported</span></td>
+          <td>
+            <div class="d-flex align-items-center">
+              <a href="javascript:;" class="btn btn-icon delete-record"><i class="bx bx-trash bx-md"></i></a>
+              <a href="javascript:;" class="btn btn-icon"><i class="bx bx-show bx-md"></i></a>
+              <a href="javascript:;" class="dropdown-item"><i class="bx bx-edit bx-md"></i></a>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>#1004</td>
+          <td>
+            <span class="badge badge-center rounded-pill bg-info"><i class='bx bx-trending-up'></i></span>
+          </td>
+          <td>Printer Jam</td>
+          <td><i class="bx bx-trending-up text-primary me-2"></i>Building 3</td>
+          <td>2024-06-04</td>
+          <td><span class="badge bg-secondary">On Hold</span></td>
+          <td>
+            <div class="d-flex align-items-center">
+              <a href="javascript:;" class="btn btn-icon delete-record"><i class="bx bx-trash bx-md"></i></a>
+              <a href="javascript:;" class="btn btn-icon"><i class="bx bx-show bx-md"></i></a>
+              <a href="javascript:;" class="dropdown-item"><i class="bx bx-edit bx-md"></i></a>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>#1005</td>
+          <td>
+            <span class="badge badge-center rounded-pill bg-primary"><i class='bx bx-bug'></i></span>
+          </td>
+          <td>Software Bug</td>
+          <td><i class="bx bx-bug text-primary me-2"></i>Lab 1</td>
+          <td>2024-06-05</td>
+          <td><span class="badge bg-warning">Pending</span></td>
+          <td>
+            <div class="d-flex align-items-center">
+              <a href="javascript:;" class="btn btn-icon delete-record"><i class="bx bx-trash bx-md"></i></a>
+              <a href="javascript:;" class="btn btn-icon"><i class="bx bx-show bx-md"></i></a>
+              <a href="javascript:;" class="dropdown-item"><i class="bx bx-edit bx-md"></i></a>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>#1006</td>
+          <td>
+            <span class="badge badge-center rounded-pill bg-secondary"><i class='bx bx-shield'></i></span>
+          </td>
+          <td>Security Alert</td>
+          <td><i class="bx bx-shield text-primary me-2"></i>Main Entrance</td>
+          <td>2024-06-06</td>
+          <td><span class="badge bg-danger">Reported</span></td>
+          <td>
+            <div class="d-flex align-items-center">
+              <a href="javascript:;" class="btn btn-icon delete-record"><i class="bx bx-trash bx-md"></i></a>
+              <a href="javascript:;" class="btn btn-icon"><i class="bx bx-show bx-md"></i></a>
+              <a href="javascript:;" class="dropdown-item"><i class="bx bx-edit bx-md"></i></a>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>#1007</td>
+          <td>
+            <span class="badge badge-center rounded-pill bg-success"><i class='bx bx-wifi'></i></span>
+          </td>
+          <td>WiFi Down</td>
+          <td><i class="bx bx-wifi text-primary me-2"></i>Conference Room</td>
+          <td>2024-06-07</td>
+          <td><span class="badge bg-info">On Hold</span></td>
+          <td>
+            <div class="d-flex align-items-center">
+              <a href="javascript:;" class="btn btn-icon delete-record"><i class="bx bx-trash bx-md"></i></a>
+              <a href="javascript:;" class="btn btn-icon"><i class="bx bx-show bx-md"></i></a>
+              <a href="javascript:;" class="dropdown-item"><i class="bx bx-edit bx-md"></i></a>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>#1008</td>
+          <td>
+            <span class="badge badge-center rounded-pill bg-dark"><i class='bx bx-power-off'></i></span>
+          </td>
+          <td>Power Failure</td>
+          <td><i class="bx bx-power-off text-primary me-2"></i>Server Room</td>
+          <td>2024-06-08</td>
+          <td><span class="badge bg-success">Closed</span></td>
+          <td>
+            <div class="d-flex align-items-center">
+              <a href="javascript:;" class="btn btn-icon delete-record"><i class="bx bx-trash bx-md"></i></a>
+              <a href="javascript:;" class="btn btn-icon"><i class="bx bx-show bx-md"></i></a>
+              <a href="javascript:;" class="dropdown-item"><i class="bx bx-edit bx-md"></i></a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex align-items-center mt-3 justify-content-end">
+      <label for="rowsPerPage" class="me-2 mb-0">Rows per page:</label>
+      <select id="rowsPerPage" class="form-select w-auto me-2">
+        <option value="5">5</option>
+        <option value="10" selected>10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+      </select>
+      <span class="ms-2">
+        1-8 of 8
+      </span>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Find the CREATE INCIDENT button
+    const createIncidentBtn = document.getElementById('createIncident');
+    if (createIncidentBtn) {
+      createIncidentBtn.addEventListener('click', function () {
+        console.log('Create Incident button clicked');
+        var offcanvasEl = document.getElementById('offcanvasAddUser');
+        if (offcanvasEl) {
+          // Add left spacing by setting padding-left
+          offcanvasEl.style.paddingLeft = '2rem';
+          var bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvasEl);
+          bsOffcanvas.show();
+        }
+      });
+    }
+  });
+</script>
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasAddUser" aria-labelledby="offcanvasAddUserLabel">
+  <div class="offcanvas-header border-bottom">
+    <h5 id="offcanvasAddUserLabel" class="offcanvas-title">Submit Deviation</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body mx-0 flex-grow-0 p-6 h-100">
+    <form class="add-new-user pt-0" id="addNewUserForm" onsubmit="return false">
+      <div class="form-check mb-0">
+        <input class="form-check-input" type="checkbox" id="anonymousCheckbox" name="anonymous" checked>
+        <label class="form-check-label" for="anonymousCheckbox">
+          I wish to remain anonymous
+        </label>
+      </div>
+      <div class="mb-6">
+        <label class="form-label" for="devType">Deviation Type</label>
+        <select id="type" class="select2 form-select">
+          <option value="">Select</option>
+          <option value="TypeA">Type A</option>
+          <option value="TypeB">Type B</option>
+          <option value="TypeC">Type C</option>
+        </select>
+      </div>
+      <div class="mb-6">
+        <label class="form-label" for="add-description">Description</label>
+        <input type="text" class="form-control" id="add-description" placeholder="TEST desc" name="userFullname"
+          aria-label="Desc1" />
+      </div>
+      <div class="mb-6">
+        <label class="form-label" for="case-manager">Case Manager</label>
+        <select id="add-description" class="form-select">
+          <option value="manager1">Manager 1</option>
+          <option value="manager2">Manager 2</option>
+          <option value="manager3">Manager 3</option>
+          <option value="manager4">Manager 4</option>
+        </select>
+      </div>
+
+      <div class="mb-6">
+        <label class="form-label" for="department">Department</label>
+        <select id="department" class="form-select">
+          <option value="hr">Human Resources</option>
+          <option value="it">Information Technology</option>
+          <option value="finance">Finance</option>
+          <option value="marketing">Marketing</option>
+          <option value="operations">Operations</option>
+        </select>
+        <div class="mb-6">
+          <label class="form-label" for="add-comment">Comment</label>
+          <input type="text" id="add-comment" class="form-control" placeholder="comment" aria-label="dev5"
+            name="companyName" />
+        </div>
+        <div class="form-check mb-0">
+          <input class=" form-check-input" type="checkbox" id="asDefaultCheckbox" name="defaultDev">
+          <label class="form-check-label" for="asDefaultCheckbox">
+            Make as default
+          </label>
+        </div>
+
+      </div>
+      <button type="submit" class="btn btn-primary me-3 data-submit">Submit</button>
+      <button type="reset" class="btn btn-label-danger" data-bs-dismiss="offcanvas">Cancel</button>
+    </form>
+  </div>
+</div>

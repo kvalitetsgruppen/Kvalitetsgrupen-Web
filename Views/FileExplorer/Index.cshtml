@@ -1,5 +1,19 @@
 @{
   ViewData["Title"] = "File Explorer";
+  Layout = "_ContentNavbarLayout"; // or whatever your Sneat layout file is
 }
 
-<a asp-controller="Document" asp-action="Edit">Not yet created.....</a>
+<link href="https://cdn.syncfusion.com/ej2/20.4.38/material.css" rel="stylesheet" />
+<script src="https://cdn.syncfusion.com/ej2/20.4.38/dist/ej2.min.js"></script>
+
+<div class="control-section">
+  <div class="sample-container">
+    @Html.EJS().FileManager("filemanager").AjaxSettings(new Syncfusion.EJ2.FileManager.FileManagerAjaxSettings
+    {
+      Url = "/FileExplorer/FileOperations",
+        UploadUrl = "/FileExplorer/Upload",
+        DownloadUrl = "/FileExplorer/Download",
+        GetImageUrl = "/FileExplorer/GetImage"
+        }).Render()
+  </div>
+</div>

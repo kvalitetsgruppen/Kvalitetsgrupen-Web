@@ -1,0 +1,202 @@
+@{
+  ViewData["Title"] = "Preview - Incident";
+}
+@model AspnetCoreMvcStarter.Models.Incident
+
+
+<div class="row incident-preview">
+  <!-- Incident -->
+  <div class="col-xl-9 col-md-8 col-12 mb-md-0 mb-6">
+    <div class="card Incident-preview-card p-sm-12 p-6">
+      <div class="card-body Incident-preview-header rounded">
+        <div
+          class="d-flex justify-content-between flex-xl-row flex-md-column flex-sm-row flex-column align-items-xl-center align-items-md-start align-items-sm-center align-items-start">
+          <div class="mb-xl-0 mb-6 text-heading">
+            <div class="d-flex svg-illustration mb-6 gap-2 align-items-center">
+              <span class="app-brand-logo demo">@await Html.PartialAsync("../_Partials/_Macros")</span>
+              <span class="app-brand-text demo text-heading fw-bold ms-50">@Model.Type</span>
+              <span class="badge rounded-pill bg-label-success">@Model.Status</span>
+              <span class="badge rounded-pill bg-label-info">@Model.DocName</span>
+              <span class="badge rounded-pill bg-label-waring">@Model.SecretLabel</span>
+            </div>
+            <p class="mb-2">Kund: @Model.Title</p>
+            <p class="mb-2">Referens: @Model.Reference</p>
+          </div>
+          <div>
+            <h5 class="mb-6">Incident #86423</h5>
+            <div class="mb-1 text-heading">
+              <span>Date Issues:</span>
+              <span class="fw-medium">April 25, 2021</span>
+            </div>
+            <div class="text-heading">
+              <span>Date Due:</span>
+              <span class="fw-medium">May 25, 2021</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body px-0">
+        <div class="row">
+          <div class="col-xl-9 col-md-12 col-sm-5 col-12 mb-xl-0 mb-md-6 mb-sm-0 mb-6">
+            <h6>Felbeskrivning</h6>
+            <p class="mb-1">@Model.Description</p>
+
+          </div>
+          <div class="col-xl-3 col-md-12 col-sm-7 col-12 ">
+            <h6>Inlämnat av</h6>
+            <div class="avatar me-2 d-inline-block">
+              <img src="~/img/avatars/2.png" alt="Avatar" class="rounded-circle">
+            </div>
+            <p class="mb-1">Pernilla Persson </p>
+            <p class="mb-1">Pernilla@kvalitetsgruppen.com</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body px-0">
+        <div class="row">
+          <div class="col-xl-9 col-md-12 col-sm-5 col-12 mb-xl-0 mb-md-6 mb-sm-0 mb-6">
+            <h6>Utredning Orsaksanalys</h6>
+            <p class="mb-1">@Model.FollowUp</p>
+            <div>
+              <h5>Vem orkasakade problemet</h5>
+              <p class="mb-1"> @Model.Supplier </p>
+            </div>
+            <div class="alert alert-warning d-flex align-items-center" role="alert">
+              <span class="alert-icon rounded-circle">
+                <i class="bx bx-xs bx-alert-triangle"></i>
+              </span>
+              2025-03-01 Reklamation moment Leverantör Incident-preview-header gjorts"
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-12 col-sm-7 col-12 ">
+            <h6>Genomfört av:</h6>
+            <div class="avatar me-2 d-inline-block">
+              <img src="~/img/avatars/3.png" alt="Avatar" class="rounded-circle">
+            </div>
+            <p class="mb-1">Andreas </p>
+            <p class="mb-1">Andreas@kvalitetsgruppen.com</p>
+            <p class="mb-1">@Model.DateFollowUp</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="table-responsive border border-bottom-0 border-top-0 rounded">
+        <table class="table m-0">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Description</th>
+              <th>Cost</th>
+              <th>Qty</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-nowrap text-heading">Vuexy Admin Template</td>
+              <td class="text-nowrap">HTML Admin Template</td>
+              <td>$32</td>
+              <td>1</td>
+              <td>$32.00</td>
+            </tr>
+            <tr>
+              <td class="text-nowrap text-heading">Frest Admin Template</td>
+              <td class="text-nowrap">Angular Admin Template</td>
+              <td>$22</td>
+              <td>1</td>
+              <td>$22.00</td>
+            </tr>
+            <tr>
+              <td class="text-nowrap text-heading">Apex Admin Template</td>
+              <td class="text-nowrap">HTML Admin Template</td>
+              <td>$17</td>
+              <td>2</td>
+              <td>$34.00</td>
+            </tr>
+            <tr>
+              <td class="text-nowrap text-heading">Robust Admin Template</td>
+              <td class="text-nowrap">React Admin Template</td>
+              <td>$66</td>
+              <td>1</td>
+              <td>$66.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-responsive">
+        <table class="table m-0 table-borderless">
+          <tbody>
+            <tr>
+              <td class="align-top pe-6 ps-0 py-6 text-body">
+                <p class="mb-1">
+                  <span class="me-2 h6">Salesperson:</span>
+                  <span>Alfie Solomons</span>
+                </p>
+                <span>Thanks for your business</span>
+              </td>
+              <td class="px-0 py-6 w-px-100">
+                <p class="mb-2">Subtotal:</p>
+                <p class="mb-2">Discount:</p>
+                <p class="mb-2 border-bottom pb-2">Tax:</p>
+                <p class="mb-0">Total:</p>
+              </td>
+              <td class="text-end px-0 py-6 w-px-100 fw-medium text-heading">
+                <p class="fw-medium mb-2">$1800</p>
+                <p class="fw-medium mb-2">$28</p>
+                <p class="fw-medium mb-2 border-bottom pb-2">21%</p>
+                <p class="fw-medium mb-0">$1690</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="mt-0 mb-6">
+      <div class="card-body p-0">
+        <div class="row">
+          <div class="col-12">
+            <span class="fw-medium text-heading">Note:</span>
+            <span>It was a pleasure working with you and your team. We hope you will keep us in mind for future
+              freelance projects. Thank You!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Incident -->
+
+  <!-- Incident Actions -->
+  <div class="col-xl-3 col-md-4 col-12 incident-actions">
+    <div class="card">
+      <div class="card-body">
+        <button class="btn btn-primary d-grid w-100 mb-4" data-bs-toggle="offcanvas"
+          data-bs-target="#sendIncidentOffcanvas">
+          <span class="d-flex align-items-center justify-content-center text-nowrap"><i
+              class="bx bx-paper-plane bx-sm me-2"></i>Send Incident</span>
+        </button>
+        <button class="btn btn-label-secondary d-grid w-100 mb-4">
+          Download
+        </button>
+        <div class="d-flex mb-4">
+          <a class="btn btn-label-secondary d-grid w-100 me-4" target="_blank" href="/Incident/Print">
+            Print
+          </a>
+          <a href="/Incident/Edit" class="btn btn-label-secondary d-grid w-100">
+            Edit
+          </a>
+        </div>
+        <button class="btn btn-success d-grid w-100" data-bs-toggle="offcanvas" data-bs-target="#addPaymentOffcanvas">
+          <span class="d-flex align-items-center justify-content-center text-nowrap"><i
+              class="bx bx-dollar bx-sm me-2"></i>Add Payment</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- /Incident Actions -->
+</div>
+
+<!-- Offcanvas -->
+@* @await Html.PartialAsync("../_Partials/_Offcanvas/OffcanvasSendIncident")
+@await Html.PartialAsync("../_Partials/_Offcanvas/OffcanvasAddPayment") *@
+<!-- /Offcanvas -->
