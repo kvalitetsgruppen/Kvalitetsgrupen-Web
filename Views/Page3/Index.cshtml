@@ -1,122 +1,158 @@
 @{
-  ViewData["Title"] = "Treeview - Extended UI";
+  ViewData["Title"] = "File Explorer";
+  Layout = "_ContentNavbarLayout";
 }
-@section VendorStyles {
-  <link rel="stylesheet" href="~/vendor/libs/jstree/jstree.css" />
-}
-@section VendorScripts {
-  <script src="~/vendor/libs/jstree/jstree.js"></script>
-}
-@section PageScripts {
-  <script src="~/js/extended-ui-treeview.js"></script>
-}
-@* ************** Content ************** *@
 
-@using Syncfusion.EJ2
+<!-- Syncfusion CSS -->
+<link href="https://cdn.syncfusion.com/ej2/20.4.38/material.css" rel="stylesheet" />
 
-<link href="https://cdn.syncfusion.com/ej2/22.1.34/material.css" rel="stylesheet" />
-<script src="https://cdn.syncfusion.com/ej2/22.1.34/dist/ej2.min.js"></script>
+<!-- Syncfusion DocumentEditor full styles -->
+<link href="https://cdn.syncfusion.com/ej2/20.4.38/material.css" rel="stylesheet" />
+<link href="https://cdn.syncfusion.com/ej2/20.4.38/ej2-documenteditor/styles/material.css" rel="stylesheet" />
 
+<!-- Syncfusion JS Core -->
+<script src="https://cdn.syncfusion.com/ej2/20.4.38/dist/ej2.min.js"></script>
 
+<!-- Syncfusion DocumentEditor core and full UI scripts -->
+<script src="https://cdn.syncfusion.com/ej2/20.4.38/dist/ej2-documenteditor.min.js"></script>
+<script src="https://cdn.syncfusion.com/ej2/20.4.38/dist/ej2-documenteditor-toolbar.min.js"></script>
+<script src="https://cdn.syncfusion.com/ej2/20.4.38/dist/ej2-documenteditor-layout.min.js"></script>
+<script src="https://cdn.syncfusion.com/ej2/20.4.38/dist/ej2-documenteditor-search.min.js"></script>
+<script src="https://cdn.syncfusion.com/ej2/20.4.38/dist/ej2-documenteditor-implementation.min.js"></script>
 
-@*<div class="row">
-  <!-- Context Menu -->
-  <div class="col-md-6 col-12">
-    <div class="card mb-6">
-      <h5 class="card-header">Context Menu</h5>
-      <div class="card-body">
-        <div id="jstree-context-menu" class="overflow-auto"></div>
-      </div>
-    </div>
-  </div>*@
-<!-- /Context Menu -->
-<!-- Drag & Drop -->
-<div class="row full-height">
-
-  <!-- Tree View Section -->
-  <div class="col-md-4 col-12">
-    <div class="card mb-6">
-      <h5 class="card-header">Tree-View</h5>
-      <div class="card-body">
-        <div id="jstree-drag-drop" class="overflow-auto"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Word Processor Section -->
-  <div class="col-md-8 col-12">
-    <div class="card mb-6">
-      <h5 class="card-header d-flex justify-content-between align-items-center">
-        <span>Word Processor</span>
-        <button class="btn btn-sm btn-primary" onclick="showEditor()">Edit</button>
-      </h5>
-      <div class="card-body">
-        <ejs-documenteditor id="container" height='850px'></ejs-documenteditor>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Add this before the dialog component -->
-<div id="dialog-target"></div>
-
-
-<!-- Syncfusion Dialog -->
-<ejs-dialog id="docEditorDialog" header="Word Processor" isModal=true visible="false" showCloseIcon="true" width="80%"
-  height="80%" target="#dialog-target" cssClass="custom-editor-dialog">
-  <e-content-template height="80%">
-    <div style="height:80%; width:80%;">
-      <!-- Container must fill height -->
-      <div style="height:80%; width:80%;">
-        <ejs-documenteditorcontainer id="docEditor" enableToolbar=true height="80%" serviceUrl="/api/DocumentEditor/"
-          zIndex="3000" created="onEditorCreated">
-        </ejs-documenteditorcontainer>
-      </div>
-    </div>
-  </e-content-template>
-</ejs-dialog>
-
-<script>
-  function showEditor() {
-    var dialog = document.getElementById("docEditorDialog").ej2_instances[0];
-    if (dialog) {
-      dialog.show();
-
-      setTimeout(function () {
-        var editor = document.getElementById("docEditor").ej2_instances?.[0];
-        if (editor) {
-          console.log("Resizing editor...");
-          editor.resize();
-        } else {
-          console.warn("Editor instance not found");
-        }
-      }, 300);
-    }
-  }
-  function onEditorCreated() {
-    console.log("Document editor is ready.");
-  }
-</script>
+@Html.EJS().ScriptManager()
 
 <style>
-  html,
-  body {
-    height: 100vh;
-    margin: 0;
+  /* Modal overlay */
+  #documenteditor_modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  #dialog-target {
-    height: 100vh;
+  /* Modal content */
+  #documenteditor_modal>div {
+    background: white;
+    width: 90vw;
+    height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    position: relative;
   }
 
-  .custom-editor-dialog .e-dlg-content {
-    height: calc(100% - 50px);
-    /* Adjusts for dialog header height */
-    padding: 0 !important;
-    overflow: hidden;
+  /* Close button */
+  #closeModalBtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    z-index: 10;
   }
 
-  #docEditor {
-    height: 100% !important;
+  /* Editor container fills modal */
+  #documenteditor_container {
+    flex: 1;
+    height: 100%;
   }
 </style>
+
+<div class="control-section" style="display:flex; gap: 1rem;">
+  <div class="sample-container" style="flex: 1;">
+    @Html.EJS().FileManager("filemanager")
+    .AjaxSettings(new Syncfusion.EJ2.FileManager.FileManagerAjaxSettings
+    {
+    Url = "/FileExplorer/FileOperations",
+    UploadUrl = "/FileExplorer/Upload",
+    DownloadUrl = "/FileExplorer/Download",
+    GetImageUrl = "/FileExplorer/GetImage"
+    })
+    .FileOpen("onFileOpen")
+    .Render()
+  </div>
+</div>
+
+<!-- Modal for DocumentEditor -->
+<div id="documenteditor_modal">
+  <div>
+    <button id="closeModalBtn" title="Close">&times;</button>
+    <div id="documenteditor_container"></div>
+  </div>
+</div>
+
+<script>
+  // Create a DocumentEditor container instance with full UI enabled
+  var documentEditor = new ej.documenteditor.DocumentEditorContainer({
+    height: '100%',
+    isReadOnly: false,
+    enablePrint: true,
+    enableEditor: true,
+    enableSelection: true,
+    enableToolbar: true, // ribbon toolbar enabled
+    enableLocalPaste: true
+  });
+  documentEditor.appendTo('#documenteditor_container');
+
+  // Close button handler
+  document.getElementById('closeModalBtn').addEventListener('click', function () {
+    documentEditor.documentEditor.close();
+    document.getElementById('documenteditor_modal').style.display = 'none';
+  });
+
+  // FileOpen handler for FileManager
+  function onFileOpen(args) {
+    if (!args.fileDetails.isFile) return;
+
+    var fileName = args.fileDetails.name;
+    var filePath = args.fileDetails.filterPath + fileName;
+    var extension = fileName.split('.').pop().toLowerCase();
+
+    var supportedExtensions = ['docx', 'sfdt', 'rtf'];
+
+    if (supportedExtensions.includes(extension)) {
+      var modal = document.getElementById('documenteditor_modal');
+      modal.style.display = 'flex'; // show modal
+
+      fetch('/FileExplorer/LoadDocument?path=' + encodeURIComponent(filePath))
+        .then(res => res.json())
+        .then(data => {
+          if (data.base64) {
+            var binaryString = atob(data.base64);
+            var len = binaryString.length;
+            var bytes = new Uint8Array(len);
+            for (var i = 0; i < len; i++) {
+              bytes[i] = binaryString.charCodeAt(i);
+            }
+            documentEditor.open(bytes.buffer);
+          } else {
+            alert('Failed to load document.');
+            modal.style.display = 'none';
+          }
+        })
+        .catch(() => {
+          alert('Error loading document.');
+          modal.style.display = 'none';
+        });
+
+      args.cancel = true; // prevent default file open
+    } else {
+      // For unsupported file types, open in new tab
+      var fileUrl = window.location.origin + '/FileExplorer/OpenFile?path=' + encodeURIComponent(filePath);
+      window.open(fileUrl, '_blank');
+      args.cancel = true;
+    }
+  }
+</script>

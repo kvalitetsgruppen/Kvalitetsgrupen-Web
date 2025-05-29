@@ -1,7 +1,3 @@
-/**
- * Treeview (jquery)
- */
-
 'use strict';
 
 $(function () {
@@ -12,205 +8,6 @@ $(function () {
     dragDrop = $('#jstree-drag-drop'),
     checkboxTree = $('#jstree-checkbox'),
     ajaxTree = $('#jstree-ajax');
-
-  // Basic
-  // --------------------------------------------------------------------
-  /*if (basicTree.length) {
-    basicTree.jstree({
-      core: {
-        themes: {
-          name: theme
-        }
-      }
-    });
-  }
-
-  // Custom Icons
-  // --------------------------------------------------------------------
-  if (customIconsTree.length) {
-    customIconsTree.jstree({
-      core: {
-        themes: {
-          name: theme
-        },
-        data: [
-          {
-            text: 'css',
-            children: [
-              {
-                text: 'app.css',
-                type: 'css'
-              },
-              {
-                text: 'style.css',
-                type: 'css'
-              }
-            ]
-          },
-          {
-            text: 'img',
-            state: {
-              opened: true
-            },
-            children: [
-              {
-                text: 'bg.jpg',
-                type: 'img'
-              },
-              {
-                text: 'logo.png',
-                type: 'img'
-              },
-              {
-                text: 'avatar.png',
-                type: 'img'
-              }
-            ]
-          },
-          {
-            text: 'js',
-            state: {
-              opened: true
-            },
-            children: [
-              {
-                text: 'jquery.js',
-                type: 'js'
-              },
-              {
-                text: 'app.js',
-                type: 'js'
-              }
-            ]
-          },
-          {
-            text: 'index.html',
-            type: 'html'
-          },
-          {
-            text: 'page-one.html',
-            type: 'html'
-          },
-          {
-            text: 'page-two.html',
-            type: 'html'
-          }
-        ]
-      },
-      plugins: ['types'],
-      types: {
-        default: {
-          icon: 'bx bx-folder'
-        },
-        html: {
-          icon: 'bx bxl-html5 text-danger'
-        },
-        css: {
-          icon: 'bx bxl-css3 text-info'
-        },
-        img: {
-          icon: 'bx bx-image text-success'
-        },
-        js: {
-          icon: 'bx bxl-nodejs text-warning'
-        }
-      }
-    });
-  }*/
-
-  // Context Menu
-  // --------------------------------------------------------------------
-  /*if (contextMenu.length) {
-    contextMenu.jstree({
-      core: {
-        themes: {
-          name: theme
-        },
-        check_callback: true,
-        data: [
-          {
-            text: 'css',
-            children: [
-              {
-                text: 'app.css',
-                type: 'css'
-              },
-              {
-                text: 'style.css',
-                type: 'css'
-              }
-            ]
-          },
-          {
-            text: 'img',
-            state: {
-              opened: true
-            },
-            children: [
-              {
-                text: 'bg.jpg',
-                type: 'img'
-              },
-              {
-                text: 'logo.png',
-                type: 'img'
-              },
-              {
-                text: 'avatar.png',
-                type: 'img'
-              }
-            ]
-          },
-          {
-            text: 'js',
-            state: {
-              opened: true
-            },
-            children: [
-              {
-                text: 'jquery.js',
-                type: 'js'
-              },
-              {
-                text: 'app.js',
-                type: 'js'
-              }
-            ]
-          },
-          {
-            text: 'index.html',
-            type: 'html'
-          },
-          {
-            text: 'page-one.html',
-            type: 'html'
-          },
-          {
-            text: 'page-two.html',
-            type: 'html'
-          }
-        ]
-      },
-      plugins: ['types', 'contextmenu'],
-      types: {
-        default: {
-          icon: 'bx bx-folder'
-        },
-        html: {
-          icon: 'bx bxl-html5 text-danger'
-        },
-        css: {
-          icon: 'bx bxl-css3 text-info'
-        },
-        img: {
-          icon: 'bx bx-image text-success'
-        },
-        js: {
-          icon: 'bx bxl-nodejs text-warning'
-        }
-      }
-    });
-  }*/
 
   // Drag Drop
   // --------------------------------------------------------------------
@@ -243,8 +40,7 @@ $(function () {
               {
                 text: 'Application Standards and Regulations.txt',
                 type: 'txt'
-              },
-
+              }
             ]
           },
           {
@@ -274,7 +70,6 @@ $(function () {
                 text: 'Strategic Planning.txt',
                 type: 'txt'
               }
-
             ]
           },
           {
@@ -388,8 +183,7 @@ $(function () {
                 type: 'txt'
               }
             ]
-          },
-
+          }
         ]
       },
       plugins: ['types', 'dnd', 'contextmenu'],
@@ -411,7 +205,7 @@ $(function () {
         },
         txt: {
           icon: 'bx bx-file text-secondary' // Icon for TXT files
-      }
+        }
       }
     });
     dragDrop.on('select_node.jstree', function (e, data) {
@@ -419,7 +213,6 @@ $(function () {
       console.log('Selected node name:', selectedNodeText); // For debugging
       $('#selected-node-name').text(selectedNodeText); // Display in UI
     });
-
 
     dragDrop.on('ready.jstree', function () {
       var treeData = dragDrop.jstree(true).get_json('#', { flat: false });
@@ -438,140 +231,4 @@ $(function () {
       console.log('All node names:', nodeNames); // You can replace this with your own logic
     });
   }
-
-
-
-  // Checkbox
-  // --------------------------------------------------------------------
-  /*if (checkboxTree.length) {
-    checkboxTree.jstree({
-      core: {
-        themes: {
-          name: theme
-        },
-        data: [
-          {
-            text: 'css',
-            children: [
-              {
-                text: 'app.css',
-                type: 'css'
-              },
-              {
-                text: 'style.css',
-                type: 'css'
-              }
-            ]
-          },
-          {
-            text: 'img',
-            state: {
-              opened: true
-            },
-            children: [
-              {
-                text: 'bg.jpg',
-                type: 'img'
-              },
-              {
-                text: 'logo.png',
-                type: 'img'
-              },
-              {
-                text: 'avatar.png',
-                type: 'img'
-              }
-            ]
-          },
-          {
-            text: 'js',
-            state: {
-              opened: true
-            },
-            children: [
-              {
-                text: 'jquery.js',
-                type: 'js'
-              },
-              {
-                text: 'app.js',
-                type: 'js'
-              }
-            ]
-          },
-          {
-            text: 'index.html',
-            type: 'html'
-          },
-          {
-            text: 'page-one.html',
-            type: 'html'
-          },
-          {
-            text: 'page-two.html',
-            type: 'html'
-          }
-        ]
-      },
-      plugins: ['types', 'checkbox', 'wholerow'],
-      types: {
-        default: {
-          icon: 'bx bx-folder'
-        },
-        html: {
-          icon: 'bx bxl-html5 text-danger'
-        },
-        css: {
-          icon: 'bx bxl-css3 text-info'
-        },
-        img: {
-          icon: 'bx bx-image text-success'
-        },
-        js: {
-          icon: 'bx bxl-nodejs text-warning'
-        }
-      }
-    });
-  }
-
-  // Ajax Example
-  // --------------------------------------------------------------------
-  if (ajaxTree.length) {
-    ajaxTree.jstree({
-      core: {
-        themes: {
-          name: theme
-        },
-        data: {
-          url: assetsPath + 'json/jstree-data.json',
-          dataType: 'json',
-          data: function (node) {
-            return {
-              id: node.id
-            };
-          }
-        }
-      },
-      plugins: ['types', 'state'],
-      types: {
-        default: {
-          icon: 'bx bx-folder'
-        },
-        html: {
-          icon: 'bx bxl-html5 text-danger'
-        },
-        css: {
-          icon: 'bx bxl-css3 text-info'
-        },
-        img: {
-          icon: 'bx bx-image text-success'
-        },
-        js: {
-          icon: 'bx bxl-nodejs text-warning'
-        }
-      }
-    });
-  }*/
-
-
 });

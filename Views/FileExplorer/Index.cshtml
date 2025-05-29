@@ -1,19 +1,98 @@
 @{
   ViewData["Title"] = "File Explorer";
-  Layout = "_ContentNavbarLayout"; // or whatever your Sneat layout file is
+  Layout = "_ContentNavbarLayout";
 }
 
+<!-- Syncfusion CSS -->
 <link href="https://cdn.syncfusion.com/ej2/20.4.38/material.css" rel="stylesheet" />
+
+<!-- Syncfusion JS -->
 <script src="https://cdn.syncfusion.com/ej2/20.4.38/dist/ej2.min.js"></script>
 
-<div class="control-section">
-  <div class="sample-container">
+<!-- DocumentEditor package -->
+<script src="https://cdn.syncfusion.com/ej2/20.4.38/dist/ej2-documenteditor.min.js"></script>
+
+@Html.EJS().ScriptManager()
+
+<div class="control-section" style="display:flex; gap: 1rem;">
+  <div class="sample-container" style="flex: 1;">
     @Html.EJS().FileManager("filemanager").AjaxSettings(new Syncfusion.EJ2.FileManager.FileManagerAjaxSettings
     {
       Url = "/FileExplorer/FileOperations",
         UploadUrl = "/FileExplorer/Upload",
         DownloadUrl = "/FileExplorer/Download",
         GetImageUrl = "/FileExplorer/GetImage"
-        }).Render()
+        }).FileOpen("onFileOpen").Render()
   </div>
 </div>
+
+<!-- Modal for DocumentEditor -->
+<div id="documenteditor_modal" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+     background-color: rgba(0,0,0,0.5); z-index: 10000; justify-content: center; align-items: center;">
+  <div
+    style="background: white; width: 80%; height: 80%; position: relative; border-radius: 8px; box-shadow: 0 0 10px #000;">
+    <button id="closeModalBtn"
+      style="position: absolute; top: 10px; right: 15px; font-size: 2rem; border: none; background: none; cursor: pointer;">&times;</button>
+    <div id="documenteditor_container" style="width: 100%; height: 100%;"></div>
+  </div>
+</div>
+
+<script>
+  // Initialize bare DocumentEditor (no toolbar or ribbon)
+  var documentEditor = new ej.documenteditor.DocumentEditor({
+    isReadOnly: false,
+    enableSelection: true,
+    enableEditor: true,
+    enablePrint: true,
+    height: '100%',
+    // width: '100%' // width will be controlled by container
+  });
+  documentEditor.appendTo('#documenteditor_container');
+
+  // Close modal and clear document editor content
+  document.getElementById('closeModalBtn').addEventListener('click', function () {
+    document.getElementById('documenteditor_modal').style.display = 'none';
+    documentEditor.close();  // Clear document content
+  });
+
+  function onFileOpen(args) {
+    if (!args.fileDetails.isFile) return;
+
+    const fileName = args.fileDetails.name;
+    const filePath = args.fileDetails.filterPath + fileName;
+    const extension = fileName.split('.').pop().toLowerCase();
+
+    const docEditorExts = ['docx', 'sfdt', 'rtf'];
+
+    console.log("Selected file name:", fileName);
+
+    if (docEditorExts.includes(extension)) {
+      // Show modal
+      document.getElementById('documenteditor_modal').style.display = 'flex';
+
+      fetch('/FileExplorer/LoadDocument?path=' + encodeURIComponent(filePath))
+        .then(response => response.json())
+        .then(data => {
+          if (data.base64) {
+            let byteCharacters = atob(data.base64);
+            let byteNumbers = new Array(byteCharacters.length);
+            for (let i = 0; i < byteCharacters.length; i++) {
+              byteNumbers[i] = byteCharacters.charCodeAt(i);
+            }
+            let byteArray = new Uint8Array(byteNumbers);
+            documentEditor.open(byteArray.buffer);
+          } else {
+            alert('Failed to load document.');
+            document.getElementById('documenteditor_modal').style.display = 'none';
+          }
+        });
+
+      args.cancel = true; // prevent default file open behavior
+    } else {
+      // Open other file types in new tab
+      const fileUrl = window.location.origin + '/FileExplorer/OpenFile?path=' + encodeURIComponent(filePath);
+      window.open(fileUrl, '_blank');
+      args.cancel = true;
+    }
+  }
+</script>

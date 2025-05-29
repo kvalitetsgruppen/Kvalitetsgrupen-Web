@@ -3,6 +3,9 @@
   Layout = "_ContentNavbarLayout"; // Use your layout path
 }
 
+
+
+
 <div class="container-xxl flex-grow-1 container-p-y">
   <h4 class="fw-bold py-3 mb-4">Customer List</h4>
 
@@ -73,7 +76,6 @@
           <select class="form-select">
             <option selected> Select Evaluation Date</option>
             <option>Last 3 months</option>
-            <!-- <input type="date" class="form-control" placeholder="Evaluation Date" />-->
             <option>Last 6 months</option>
             <option>This Year</option>
             <option>Last year</option>
@@ -92,9 +94,8 @@
       <input type="text" class="form-control w-25" placeholder="Search Customer" />
       <div>
         <button class="btn btn-outline-secondary me-2">Export</button>
-
         <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#addCustomerOffcanvas" role="button">
-    + Add New Customer
+          + Add New Customer
         </a>
       </div>
     </div>
@@ -141,5 +142,67 @@
         </tbody>
       </table>
     </div>
+  </div>
+</div>
+
+<!-- Offcanvas Structure -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="addCustomerOffcanvas" aria-labelledby="addCustomerLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="addCustomerLabel">Add New Customer</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form asp-action="AddCustomer" method="post" class="d-flex flex-column gap-3">
+      <div>
+        <label class="form-label">Customer Name</label>
+        <input type="text" class="form-control" name="CustomerName" placeholder="Enter Customer Name" required />
+      </div>
+      <div>
+        <label class="form-label">Customer ID</label>
+        <input type="text" class="form-control" name="CustomerID" placeholder="Enter Customer ID" required />
+      </div>
+      <div>
+        <label class="form-label">Contact Person</label>
+        <input type="text" class="form-control" name="ContactPerson" placeholder="Enter Contact Person" />
+      </div>
+      <div>
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" name="Email" placeholder="Enter Email" />
+      </div>
+      <div>
+        <label class="form-label">Website</label>
+        <input type="url" class="form-control" name="Website" placeholder="Enter Website" />
+      </div>
+      <div>
+        <label class="form-label">Classification</label>
+        <select class="form-select" name="Classification">
+          <option selected disabled>Choose...</option>
+          <option value="A Customer">A Customer</option>
+          <option value="B Customer">B Customer</option>
+          <option value="C Customer">C Customer</option>
+          <option value="D Customer">D Customer</option>
+          <option value="Not Active">Not Active</option>
+          <option value="Prospect">Prospect</option>
+        </select>
+      </div>
+      <div>
+        <label class="form-label">Satisfaction Level</label>
+        <select class="form-select" name="SatisfactionLevel">
+          <option selected disabled>Select...</option>
+          <option value="Satisfied">Satisfied</option>
+          <option value="Not Satisfied">Not Satisfied</option>
+          <option value="No Record">No Record</option>
+        </select>
+      </div>
+      <div>
+        <label class="form-label">Evaluation Date</label>
+        <input type="date" class="form-control" name="EvaluationDate" />
+      </div>
+      <div class="d-flex justify-content-end gap-2 mt-4">
+        <button type="submit" class="btn" style="background-color:#5C7CFA; color:white;">Submit</button>
+        <button type="button" class="btn" style="background-color: #FFE4E6; color: #FF0000;"
+          data-bs-dismiss="offcanvas">Cancel</button>
+      </div>
+    </form>
   </div>
 </div>
