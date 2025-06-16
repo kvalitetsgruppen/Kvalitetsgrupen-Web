@@ -1,158 +1,285 @@
 @{
-  ViewData["Title"] = "File Explorer";
-  Layout = "_ContentNavbarLayout";
+  ViewData["Title"] = "Treeview - Extended UI";
 }
+@{
+  var treeViewData = ViewBag.TreeViewData;
+  var assetsPath = ViewBag.AssetsPath;
+}
+@section VendorStyles {
+  <link rel="stylesheet" href="~/vendor/libs/jstree/jstree.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+}
+@section VendorScripts {
+  <script src="~/vendor/libs/jstree/jstree.js"></script>
+}
+@section PageScripts {
+  <script src="~/js/extended-ui-treeview.js"></script>
+}
+@* ************** Content ************** *@
 
-<!-- Syncfusion CSS -->
-<link href="https://cdn.syncfusion.com/ej2/20.4.38/material.css" rel="stylesheet" />
 
-<!-- Syncfusion DocumentEditor full styles -->
-<link href="https://cdn.syncfusion.com/ej2/20.4.38/material.css" rel="stylesheet" />
-<link href="https://cdn.syncfusion.com/ej2/20.4.38/ej2-documenteditor/styles/material.css" rel="stylesheet" />
 
-<!-- Syncfusion JS Core -->
-<script src="https://cdn.syncfusion.com/ej2/20.4.38/dist/ej2.min.js"></script>
 
-<!-- Syncfusion DocumentEditor core and full UI scripts -->
-<script src="https://cdn.syncfusion.com/ej2/20.4.38/dist/ej2-documenteditor.min.js"></script>
-<script src="https://cdn.syncfusion.com/ej2/20.4.38/dist/ej2-documenteditor-toolbar.min.js"></script>
-<script src="https://cdn.syncfusion.com/ej2/20.4.38/dist/ej2-documenteditor-layout.min.js"></script>
-<script src="https://cdn.syncfusion.com/ej2/20.4.38/dist/ej2-documenteditor-search.min.js"></script>
-<script src="https://cdn.syncfusion.com/ej2/20.4.38/dist/ej2-documenteditor-implementation.min.js"></script>
 
-@Html.EJS().ScriptManager()
 
-<style>
-  /* Modal overlay */
-  #documenteditor_modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 10000;
+  <!-- Tree View Section -->
+  <div class="col-md-4 col-12">
+    <div class="card mb-6">
+      <div class="card-body" style="height:170px">
+        <!-- #region >-->
+        <div>
+          <div class="d-flex align-items-center mb-3">
+            <ejs-textbox id="textbox" placeholder="Search" cssClass="e-corner me-2"></ejs-textbox>
+            <button type="button" class="btn btn-outline-primary" onclick="SearchTree()">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+        </div>
+        <button id="addNew" onclick=AddNewDoc() class="btn btn-primary me-3 ">Add New Doc</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditDoc">
+          Redigera Dokument
+        </button>
+
+      </div>
+    </div>
+    <div class="card">
+      <h5 class="card-header">Manual</h5>
+      <div class="card-body treeview-body" style="height:570px">
+
+        <ejs-treeview id="Treedata" showCheckBox="true" , allowDragAndDrop="true" allowTextWrap="true"
+          allowEditing="true" nodeSelected=getSelectedNode>
+          <e-treeview-fields dataSource="@treeViewData" id="id" parentId="pid" text="name" hasChildren="hasChild"
+            isChecked="Checked" contextmenu="true" iconCss="icon" expanded="expanded"></e-treeview-fields>
+        </ejs-treeview>
+
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Word Processor Section -->
+  <div class="col-md-8 col-12">
+    <div class="card mb-6">
+
+      <div class="card-body">
+        <ejs-documenteditorcontainer id="container" serviceUrl="/api/DocumentEditor/" showPropertiesPane=false
+          enableToolbar=false created="onCreated" height="800px" enableEditor="true"
+          isReadOnly="true"></ejs-documenteditorcontainer>
+
+
+        </ejs-ejs-documenteditor>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Add this before the dialog component -->
+<div id="dialog-target"></div>
+
+
+<!-- Syncfusion Dialog -->
+<ejs-dialog id="docEditorDialog" header="Word Processor" isModal=true visible="false" showCloseIcon="true" width="80%"
+  height="80%" target="#dialog-target" cssClass="custom-editor-dialog">
+  <e-content-template height="80%">
+    <div style="height:80%; width:80%;">
+      <!-- Container must fill height -->
+      <div style="height:80%; width:80%;">
+        <ejs-documenteditorcontainer id="docEditor" enableToolbar=true height="80%" serviceUrl="/api/DocumentEditor/"
+          zIndex="3000" created="onEditorCreated">
+        </ejs-documenteditorcontainer>
+      </div>
+    </div>
+  </e-content-template>
+</ejs-dialog>
+
+<script>
+
+  var documenteditor;
+  function EditDoc() {
+
+    @* var documenteditorElement = document.getElementById("container");
+    container = documenteditorElement.ej2_instances[0];
+    documenteditor = container.documentEditor;
+    // To insert text in cursor position
+    container.enableToolbar = true;
+    container.toolbarItems = ['New', 'Open', 'Undo', 'Redo'];
+    container.documentEditor.isReadOnly = false;
+    // Load a file (for example, a Word document in SFDT format)
+    // You need to fetch the file content (sfdt) from your server or a file input
+    // Example: load from a URL via AJAX
+    fetch('/test1.sfdt')
+      .then(response => response.json())
+      .then(sfdt => {
+        container.documentEditor.open(sfdt);
+      }); *@
+      $.ajax({
+        url: '/Page3/EditDocModal',
+        type: 'GET',
+        success: function (result) {
+          // Create a container for the modal if it doesn't exist
+          var modalContainer = document.getElementById('editDocModalContainer');
+          if (!modalContainer) {
+            modalContainer = document.createElement('div');
+            modalContainer.id = 'editDocModalContainer';
+            document.body.appendChild(modalContainer);
+          }
+          modalContainer.innerHTML = result;
+
+          // Show the modal (assuming Bootstrap modal)
+          var modalElement = document.getElementById('editDocModal');
+          if (modalElement) {
+            var modal = new bootstrap.Modal(modalElement);
+            modal.show();
+          }
+        },
+        error: function () {
+          alert('Failed to load the edit document modal.');
+        }
+      });
+
+  }
+  function onCreated() {
+
+    var documenteditor;
+    document.addEventListener('DOMContentLoaded', function () {
+      documenteditor = documenteditorElement.ej2_instances[0];
+      var documenteditorElement = document.getElementById("container");
+      container = documenteditorElement.ej2_instances[0];
+      console.log("Document editor is ready.");
+      var sfdt = { "sections": [{ "sectionFormat": { "pageWidth": 612, "pageHeight": 792, "leftMargin": 72, "rightMargin": 72, "topMargin": 72, "bottomMargin": 72, "differentFirstPage": false, "differentOddAndEvenPages": false, "headerDistance": 36, "footerDistance": 36, "bidi": false }, "blocks": [{ "paragraphFormat": { "afterSpacing": 30, "styleName": "Heading 1", "listFormat": {} }, "characterFormat": {}, "inlines": [{ "characterFormat": {}, "text": "Adventure Works Cycles" }] }], "headersFooters": { "header": { "blocks": [{ "paragraphFormat": { "listFormat": {} }, "characterFormat": {}, "inlines": [] }] }, "footer": { "blocks": [{ "paragraphFormat": { "listFormat": {} }, "characterFormat": {}, "inlines": [] }] } } }], "characterFormat": { "bold": false, "italic": false, "fontSize": 11, "fontFamily": "Calibri", "underline": "None", "strikethrough": "None", "baselineAlignment": "Normal", "highlightColor": "NoColor", "fontColor": "empty", "fontSizeBidi": 11, "fontFamilyBidi": "Calibri", "allCaps": false }, "paragraphFormat": { "leftIndent": 0, "rightIndent": 0, "firstLineIndent": 0, "textAlignment": "Left", "beforeSpacing": 0, "afterSpacing": 0, "lineSpacing": 1.0791666507720947, "lineSpacingType": "Multiple", "listFormat": {}, "bidi": false }, "defaultTabWidth": 36, "trackChanges": false, "enforcement": false, "hashValue": "", "saltValue": "", "formatting": false, "protectionType": "NoProtection", "dontUseHTMLParagraphAutoSpacing": false, "formFieldShading": true, "styles": [{ "name": "Normal", "type": "Paragraph", "paragraphFormat": { "lineSpacing": 1.149999976158142, "lineSpacingType": "Multiple", "listFormat": {} }, "characterFormat": { "fontFamily": "Calibri" }, "next": "Normal" }, { "name": "Default Paragraph Font", "type": "Character", "characterFormat": {} }, { "name": "Heading 1 Char", "type": "Character", "characterFormat": { "fontSize": 16, "fontFamily": "Calibri Light", "fontColor": "#2F5496" }, "basedOn": "Default Paragraph Font" }, { "name": "Heading 1", "type": "Paragraph", "paragraphFormat": { "beforeSpacing": 12, "afterSpacing": 0, "outlineLevel": "Level1", "listFormat": {} }, "characterFormat": { "fontSize": 16, "fontFamily": "Calibri Light", "fontColor": "#2F5496" }, "basedOn": "Normal", "link": "Heading 1 Char", "next": "Normal" }, { "name": "Heading 2 Char", "type": "Character", "characterFormat": { "fontSize": 13, "fontFamily": "Calibri Light", "fontColor": "#2F5496" }, "basedOn": "Default Paragraph Font" }, { "name": "Heading 2", "type": "Paragraph", "paragraphFormat": { "beforeSpacing": 2, "afterSpacing": 6, "outlineLevel": "Level2", "listFormat": {} }, "characterFormat": { "fontSize": 13, "fontFamily": "Calibri Light", "fontColor": "#2F5496" }, "basedOn": "Normal", "link": "Heading 2 Char", "next": "Normal" }, { "name": "Heading 3", "type": "Paragraph", "paragraphFormat": { "leftIndent": 0, "rightIndent": 0, "firstLineIndent": 0, "textAlignment": "Left", "beforeSpacing": 2, "afterSpacing": 0, "lineSpacing": 1.0791666507720947, "lineSpacingType": "Multiple", "outlineLevel": "Level3", "listFormat": {} }, "characterFormat": { "fontSize": 12, "fontFamily": "Calibri Light", "fontColor": "#1F3763" }, "basedOn": "Normal", "link": "Heading 3 Char", "next": "Normal" }, { "name": "Heading 3 Char", "type": "Character", "characterFormat": { "fontSize": 12, "fontFamily": "Calibri Light", "fontColor": "#1F3763" }, "basedOn": "Default Paragraph Font" }, { "name": "Heading 4", "type": "Paragraph", "paragraphFormat": { "leftIndent": 0, "rightIndent": 0, "firstLineIndent": 0, "textAlignment": "Left", "beforeSpacing": 2, "afterSpacing": 0, "lineSpacing": 1.0791666507720947, "lineSpacingType": "Multiple", "outlineLevel": "Level4", "listFormat": {} }, "characterFormat": { "italic": true, "fontFamily": "Calibri Light", "fontColor": "#2F5496" }, "basedOn": "Normal", "link": "Heading 4 Char", "next": "Normal" }, { "name": "Heading 4 Char", "type": "Character", "characterFormat": { "italic": true, "fontFamily": "Calibri Light", "fontColor": "#2F5496" }, "basedOn": "Default Paragraph Font" }, { "name": "Heading 5", "type": "Paragraph", "paragraphFormat": { "leftIndent": 0, "rightIndent": 0, "firstLineIndent": 0, "textAlignment": "Left", "beforeSpacing": 2, "afterSpacing": 0, "lineSpacing": 1.0791666507720947, "lineSpacingType": "Multiple", "outlineLevel": "Level5", "listFormat": {} }, "characterFormat": { "fontFamily": "Calibri Light", "fontColor": "#2F5496" }, "basedOn": "Normal", "link": "Heading 5 Char", "next": "Normal" }, { "name": "Heading 5 Char", "type": "Character", "characterFormat": { "fontFamily": "Calibri Light", "fontColor": "#2F5496" }, "basedOn": "Default Paragraph Font" }, { "name": "Heading 6", "type": "Paragraph", "paragraphFormat": { "leftIndent": 0, "rightIndent": 0, "firstLineIndent": 0, "textAlignment": "Left", "beforeSpacing": 2, "afterSpacing": 0, "lineSpacing": 1.0791666507720947, "lineSpacingType": "Multiple", "outlineLevel": "Level6", "listFormat": {} }, "characterFormat": { "fontFamily": "Calibri Light", "fontColor": "#1F3763" }, "basedOn": "Normal", "link": "Heading 6 Char", "next": "Normal" }, { "name": "Heading 6 Char", "type": "Character", "characterFormat": { "fontFamily": "Calibri Light", "fontColor": "#1F3763" }, "basedOn": "Default Paragraph Font" }], "lists": [], "abstractLists": [], "comments": [], "revisions": [], "customXml": [] };
+      // open the default document.
+      container.open(JSON.stringify(sfdt));
+    });
+
   }
 
-  /* Modal content */
-  #documenteditor_modal>div {
-    background: white;
-    width: 90vw;
-    height: 90vh;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-    position: relative;
+  function filterTreeNodes(searchString) {
+    // Get the TreeView instance
+    var treeObj = document.getElementById('Treedata').ej2_instances[0];
+
+    // Reset all nodes to visible before applying the filter
+    treeObj.expandAll();
+    treeObj.collapseAll();
+    var allNodes = treeObj.element.querySelectorAll('.e-list-item');
+    allNodes.forEach(node => node.style.display = '');
+
+    // Filter nodes based on the search string
+    if (searchString.trim() !== '') {
+      var matchedNodes = treeObj.element.querySelectorAll('.e-list-item');
+      matchedNodes.forEach(node => {
+
+        var nodeText = node.querySelector('.e-text-content').innerText;
+        if (nodeText.toLowerCase().includes(searchString.toLowerCase())) {
+
+          // If the node matches, ensure it is visible
+          console.log(nodeText);
+        }
+        else {
+          // If the node does not match, hide it
+          node.style.display = 'none';
+        }
+      });
+    }
+  }
+  function SearchTree() {
+    var searchString = document.getElementById('textbox').ej2_instances[0].value;
+    filterTreeNodes(searchString);
   }
 
-  /* Close button */
-  #closeModalBtn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 2rem;
-    border: none;
-    background: none;
-    cursor: pointer;
-    z-index: 10;
+  function AddNewDoc() {
+    var treeObj = document.getElementById('Treedata').ej2_instances[0];
+
+    selNode = getSelectedNode();
+    treeObj.addNodes([{ id: 29, pid: selNode.id, name: 'New Child ' }], treeObj.selectedNodes[0]);
+
+    treeObj.expandNode(treeObj.selectedNodes[0]);
+
+
+  }
+  function SaveDoc() {
+    console.log("Saving document...");
+    documenteditor.save('sampleFile', 'Sfdt');
+
   }
 
-  /* Editor container fills modal */
-  #documenteditor_container {
-    flex: 1;
+
+  function getSelectedNode() {
+    // Get the TreeView instance
+    var treeObj = document.getElementById('Treedata').ej2_instances[0];
+
+    // Get the selected nodes
+    var selectedNodes = treeObj.selectedNodes;
+
+    if (selectedNodes.length > 0) {
+      // Get details of the first selected node
+      var selectedNodeDetails = treeObj.getNode(selectedNodes[0]);
+      console.log("Selected Node Details:", selectedNodeDetails);
+      return selectedNodeDetails;
+    } else {
+      console.log("No node is selected.");
+      return null;
+    }
+
+  }
+  function showEditor() {
+    var dialog = document.getElementById("docEditorDialog").ej2_instances[0];
+    if (dialog) {
+      dialog.show();
+
+      setTimeout(function () {
+        var editor = document.getElementById("docEditor").ej2_instances?.[0];
+        if (editor) {
+          console.log("Resizing editor...");
+          editor.resize();
+        } else {
+          console.warn("Editor instance not found");
+        }
+      }, 300);
+    }
+  }
+  function onEditorCreated() {
+    console.log("Document editor is ready.");
+  }
+</script>
+
+
+
+
+  }
+
+  #docEditor {
+    height: 100% !important;
+  }
+
+  .offcanvas-body {
+    padding: 0;
     height: 100%;
+    overflow: hidden;
+  }
+
+  .offcanvas {
+    width: 80%;
+    s
+  }
+
+  #offcanvasDocEditorContainer {
+    height: 100% !important;
+  }
+
+  /* Change font size for all nodes in Syncfusion TreeView */
+  .e-treeview .e-list-text {
+    font-size: 18px !important;
+    /* Set your desired size */
+  }
+
+  .treeview-body {
+    height: 570px;
+    /* or any height you want */
+    overflow-y: auto;
+    /* enables vertical scrollbar */
+    overflow-x: hidden;
+    /* prevents horizontal scroll */
   }
 </style>
 
-<div class="control-section" style="display:flex; gap: 1rem;">
-  <div class="sample-container" style="flex: 1;">
-    @Html.EJS().FileManager("filemanager")
-    .AjaxSettings(new Syncfusion.EJ2.FileManager.FileManagerAjaxSettings
-    {
-    Url = "/FileExplorer/FileOperations",
-    UploadUrl = "/FileExplorer/Upload",
-    DownloadUrl = "/FileExplorer/Download",
-    GetImageUrl = "/FileExplorer/GetImage"
-    })
-    .FileOpen("onFileOpen")
-    .Render()
-  </div>
-</div>
-
-<!-- Modal for DocumentEditor -->
-<div id="documenteditor_modal">
-  <div>
-    <button id="closeModalBtn" title="Close">&times;</button>
-    <div id="documenteditor_container"></div>
-  </div>
-</div>
-
-<script>
-  // Create a DocumentEditor container instance with full UI enabled
-  var documentEditor = new ej.documenteditor.DocumentEditorContainer({
-    height: '100%',
-    isReadOnly: false,
-    enablePrint: true,
-    enableEditor: true,
-    enableSelection: true,
-    enableToolbar: true, // ribbon toolbar enabled
-    enableLocalPaste: true
-  });
-  documentEditor.appendTo('#documenteditor_container');
-
-  // Close button handler
-  document.getElementById('closeModalBtn').addEventListener('click', function () {
-    documentEditor.documentEditor.close();
-    document.getElementById('documenteditor_modal').style.display = 'none';
-  });
-
-  // FileOpen handler for FileManager
-  function onFileOpen(args) {
-    if (!args.fileDetails.isFile) return;
-
-    var fileName = args.fileDetails.name;
-    var filePath = args.fileDetails.filterPath + fileName;
-    var extension = fileName.split('.').pop().toLowerCase();
-
-    var supportedExtensions = ['docx', 'sfdt', 'rtf'];
-
-    if (supportedExtensions.includes(extension)) {
-      var modal = document.getElementById('documenteditor_modal');
-      modal.style.display = 'flex'; // show modal
-
-      fetch('/FileExplorer/LoadDocument?path=' + encodeURIComponent(filePath))
-        .then(res => res.json())
-        .then(data => {
-          if (data.base64) {
-            var binaryString = atob(data.base64);
-            var len = binaryString.length;
-            var bytes = new Uint8Array(len);
-            for (var i = 0; i < len; i++) {
-              bytes[i] = binaryString.charCodeAt(i);
-            }
-            documentEditor.open(bytes.buffer);
-          } else {
-            alert('Failed to load document.');
-            modal.style.display = 'none';
-          }
-        })
-        .catch(() => {
-          alert('Error loading document.');
-          modal.style.display = 'none';
-        });
-
-      args.cancel = true; // prevent default file open
-    } else {
-      // For unsupported file types, open in new tab
-      var fileUrl = window.location.origin + '/FileExplorer/OpenFile?path=' + encodeURIComponent(filePath);
-      window.open(fileUrl, '_blank');
-      args.cancel = true;
-    }
-  }
-</script>
+@await Html.PartialAsync("../_Partials/_Modals/ModalEditDoc")

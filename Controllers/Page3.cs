@@ -1,17 +1,31 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using AspnetCoreMvcStarter.Models;
+using System.Collections.Generic;
+using MySql.Data.MySqlClient;
 
-namespace AspnetCoreMvcStarter.Controllers;
+
 
 public class Page3 : Controller
 {
-  public IActionResult Index() => View();
+  private readonly DocumentRepository _connectTest;
+  public Page3(DocumentRepository connectTest)
+  {
+    _connectTest = connectTest;
+  }
+  public IActionResult Index()
+  {
+    var listdata = _connectTest.TestConnection();
+    ViewBag.TreeViewData = listdata;
+    return View();
+
+  }
+
 
   public IActionResult Treeview() => View();
   public ActionResult ToggleButton()
-{
+  {
     return View();
-}
+  }
 
 }

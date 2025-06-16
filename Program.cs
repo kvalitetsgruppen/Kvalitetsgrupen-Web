@@ -1,10 +1,13 @@
-
-
+using Microsoft.EntityFrameworkCore;
+using Syncfusion.Licensing;
 
 var builder = WebApplication.CreateBuilder(args);
-
+//Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NHaF5cWWdCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdmWXlfcXVVRGRZUkBxW0FWYUo=");
+SyncfusionLicenseProvider.RegisterLicense("Mgo+DSMBPh8sVXJ8S0d+X1JPd11dXmJWd1p/THNYflR1fV9DaUwxOX1dQl9mSX1SdkVnXXxaeXxWQWQ=");
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddSession();  // added by Sudipta on 3.4.25
+
+builder.Services.AddTransient<DocumentRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

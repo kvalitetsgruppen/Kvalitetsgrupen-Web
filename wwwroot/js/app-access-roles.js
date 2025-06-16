@@ -14,7 +14,7 @@ $(function () {
       3: { title: 'Inactive', class: 'bg-label-secondary' }
     };
 
-  var userView = '/Users/ViewAccount';
+  var userView = '/People/ViewAccount';
 
   // Users List datatable
   if (dtUserTable.length) {
@@ -27,7 +27,7 @@ $(function () {
         { data: 'full_name' },
         { data: 'role' },
         { data: 'current_plan' },
-        { data: 'billing' },
+        { data: 'phone' },
         { data: 'status' },
         { data: '' }
       ],
@@ -105,6 +105,12 @@ $(function () {
           render: function (data, type, full, meta) {
             var $role = full['role'];
             var roleBadgeObj = {
+              Projektassistent: '<i class="bx bx-crown text-primary me-2"></i>',
+              Utveckling: '<i class="bx bx-edit text-warning me-2"></i>',
+              Programmer: '<i class="bx bx-user text-success me-2"></i>',
+              Revisor: '<i class="bx bx-pie-chart-alt text-info me-2"></i>',
+              'Chief Operating Officer - COO': '<i class="bx bx-desktop text-danger me-2"></i>',
+              'Styrelse ordförande': '<i class="bx bx-shield text-dark me-2"></i>',
               Subscriber: '<i class="bx bx-crown text-primary me-2"></i>',
               Author: '<i class="bx bx-edit text-warning me-2"></i>',
               Maintainer: '<i class="bx bx-user text-success me-2"></i>',
@@ -146,7 +152,7 @@ $(function () {
         {
           // Actions
           targets: -1,
-          title: 'Actions',
+          title: 'ÅTGÄRDER',
           searchable: false,
           orderable: false,
           render: function (data, type, full, meta) {
@@ -166,7 +172,7 @@ $(function () {
           }
         }
       ],
-      order: [[2, 'desc']],
+      order: [[0, 'asc']],
       dom:
         '<"row"' +
         '<"col-sm-12 col-md-4 col-lg-6" l>' +

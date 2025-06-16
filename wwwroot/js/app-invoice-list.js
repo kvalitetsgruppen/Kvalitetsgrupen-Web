@@ -211,21 +211,33 @@ $(function () {
         '<"col-sm-12 col-md-6"p>' +
         '>',
       language: {
-        sLengthMenu: 'Show _MENU_',
+        sLengthMenu: 'Visa _MENU_',
         search: '',
-        searchPlaceholder: 'Search Invoice',
+        searchPlaceholder: 'Sök ärenden',
         paginate: {
           next: '<i class="bx bx-chevron-right bx-18px"></i>',
           previous: '<i class="bx bx-chevron-left bx-18px"></i>'
-        }
+        },
+        info: 'Visar _START_ till _END_ av _TOTAL_ ärenden',
+        infoEmpty: 'Visar 0 till 0 av 0 ärenden',
+        infoFiltered: '(filtrerade från totalt _MAX_ ärenden)',
+        zeroRecords: 'Inga matchande ärenden hittades',
+        lengthMenu: 'Visa _MENU_',
+        emptyTable: 'Ingen data tillgänglig i tabellen'
       },
       // Buttons with Dropdown
       buttons: [
         {
-          text: '<i class="bx bx-plus bx-sm me-md-2"></i><span class="d-md-inline-block d-none">Create Invoice</span>',
-          className: 'btn btn-primary',
+          text: '<i class="bx bx-plus bx-sm me-0 me-sm-2"></i><span class="d-none d-sm-inline-block">SKAPA ÄRENDE</span>',
+          className: 'btn btn-primary ms-auto',
           action: function (e, dt, button, config) {
-            window.location = '/Invoice/Add';
+            var offcanvasEl = document.getElementById('offcanvasAddUser');
+            if (offcanvasEl) {
+              // Add left spacing by setting padding-left
+              offcanvasEl.style.paddingLeft = '2rem';
+              var bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvasEl);
+              bsOffcanvas.show();
+            }
           }
         }
       ],

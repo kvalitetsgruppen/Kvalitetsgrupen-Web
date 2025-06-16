@@ -2,91 +2,91 @@
   "data": [
     {
       "id": 1,
-      "full_name": "Galen Slixby",
-      "role": "Editor",
-      "username": "gslixby0",
-      "email": "gslixby0@abc.net.au",
-      "current_plan": "Enterprise",
-      "billing": "Manual - Credit Card",
+      "full_name": "Tobias Adersjö",
+      "role": "Chief Operating Officer - COO",
+      "username": "Tobias",
+      "email": "tobias@kvalitetsgruppen.com",
+      "current_plan": "Företag",
+      "phone": "+46 70 123 45 67",
       "status": 3,
-      "avatar": ""
+      "avatar": "Tobias.png"
     },
     {
       "id": 2,
-      "full_name": "Halsey Redmore",
-      "role": "Author",
-      "username": "hredmore1",
-      "email": "hredmore1@imgur.com",
+      "full_name": "Donant Kürtök",
+      "role": "Styrelse ordförande",
+      "username": "Donant",
+      "email": "donant@kvalitetsgruppen.com",
       "current_plan": "Team",
-      "billing": "Manual - Paypal",
+      "phone": "+46 70 234 56 78",
       "status": 1,
-      "avatar": "10.png"
+      "avatar": "Donant.png"
     },
     {
       "id": 3,
-      "full_name": "Marjory Sicely",
-      "role": "Maintainer",
-      "username": "msicely2",
-      "email": "msicely2@who.int",
+      "full_name": "Andreas Adersjö",
+      "role": "Revisor",
+      "username": "Andreas",
+      "email": "andreas@kvalitetsgruppen.com",
       "current_plan": "Enterprise",
-      "billing": "Auto Debit",
+      "phone": "+46 70 345 67 89",
       "status": 2,
-      "avatar": "1.png"
+      "avatar": "Andreas.png"
     },
     {
       "id": 4,
-      "full_name": "Cyrill Risby",
-      "role": "Maintainer",
-      "username": "crisby3",
-      "email": "crisby3@wordpress.com",
+      "full_name": "Pernilla Persson",
+      "role": "Projektassistent",
+      "username": "Pernilla",
+      "email": "pernilla@kvalitetsgruppen.com",
       "current_plan": "Team",
-      "billing": "Manual - Credit Card",
+      "phone": "+46 70 456 78 90",
       "status": 3,
-      "avatar": "9.png"
+      "avatar": "Pernilla.png"
     },
     {
       "id": 5,
-      "full_name": "Maggy Hurran",
-      "role": "Subscriber",
-      "username": "mhurran4",
-      "email": "mhurran4@yahoo.co.jp",
+      "full_name": "Patrik Kürtök",
+      "role": "Utveckling",
+      "username": "Patrik",
+      "email": "patrik@kvalitetsgruppen.com",
       "current_plan": "Enterprise",
-      "billing": "Auto Debit",
+      "phone": "+46 70 567 89 01",
       "status": 1,
-      "avatar": "10.png"
+      "avatar": "Patrik.png"
     },
     {
       "id": 6,
-      "full_name": "Silvain Halstead",
-      "role": "Author",
-      "username": "shalstead5",
-      "email": "shalstead5@shinystat.com",
+      "full_name": "Sudipta Mukherjee",
+      "role": "Programmer",
+      "username": "Sudipta",
+      "email": "sudipta@kvalitetsgruppen.com",
       "current_plan": "Company",
-      "billing": "Auto Debit",
+      "phone": "+46 70 678 90 12",
       "status": 2,
       "avatar": ""
     },
     {
       "id": 7,
-      "full_name": "Breena Gallemore",
-      "role": "Subscriber",
-      "username": "bgallemore6",
-      "email": "bgallemore6@boston.com",
+      "full_name": "Viorica Lidia Craciun",
+      "role": "Programmer",
+      "username": "Viorica",
+      "email": "viorica.lidia@kvalitetsgruppen.com",
       "current_plan": "Company",
-      "billing": "Manual - Paypal",
+      "phone": "+46 70 789 01 23",
       "status": 1,
       "avatar": ""
     },
     {
       "id": 8,
-      "full_name": "Kathryne Liger",
-      "role": "Author",
-      "username": "kliger7",
-      "email": "kliger7@vinaora.com",
-      "current_plan": "Enterprise",
-      "billing": "Manual - Cash",
+      "full_name": "-------------",
+      "role": "--",
+      "username": "-",
+      "email": "-----",
+      "current_plan": "-----",
+      "phone": "----",
       "status": 1,
-      "avatar": "9.png"
+      "avatar": ""
     },
     {
       "id": 9,
@@ -95,7 +95,7 @@
       "username": "fscotfurth8",
       "email": "fscotfurth8@dailymotion.com",
       "current_plan": "Team",
-      "billing": "Auto Debit",
+      "phone": "+46 70 901 23 45",
       "status": 1,
       "avatar": "2.png"
     },
@@ -106,7 +106,7 @@
       "username": "jbellany9",
       "email": "jbellany9@kickstarter.com",
       "current_plan": "Company",
-      "billing": "Auto Debit",
+      "phone": "+46 70 012 34 56",
       "status": 3,
       "avatar": "9.png"
     },
@@ -117,7 +117,7 @@
       "username": "jwharltona",
       "email": "jwharltona@oakley.com",
       "current_plan": "Team",
-      "billing": "Manual - Paypal",
+      "phone": "+46 70 123 45 68",
       "status": 3,
       "avatar": "4.png"
     },
@@ -128,7 +128,7 @@
       "username": "shallamb",
       "email": "shallamb@hugedomains.com",
       "current_plan": "Team",
-      "billing": "Manual - Credit Card",
+      "phone": "+46 70 234 56 79",
       "status": 1,
       "avatar": "5.png"
     },
@@ -139,7 +139,7 @@
       "username": "ypottiec",
       "email": "ypottiec@privacy.gov.au",
       "current_plan": "Basic",
-      "billing": "Auto Debit",
+      "phone": "+46 70 345 67 80",
       "status": 3,
       "avatar": "7.png"
     },
@@ -150,7 +150,7 @@
       "username": "mkraused",
       "email": "mkraused@stanford.edu",
       "current_plan": "Team",
-      "billing": "Auto Debit",
+      "phone": "+46 70 456 78 91",
       "status": 2,
       "avatar": "9.png"
     },
@@ -161,7 +161,7 @@
       "username": "zmcclevertye",
       "email": "zmcclevertye@soundcloud.com",
       "current_plan": "Enterprise",
-      "billing": "Auto Debit",
+      "phone": "+46 70 567 89 02",
       "status": 2,
       "avatar": "2.png"
     },
@@ -172,7 +172,7 @@
       "username": "bemblinf",
       "email": "bemblinf@wired.com",
       "current_plan": "Company",
-      "billing": "Auto Debit",
+      "phone": "+46 70 678 90 13",
       "status": 2,
       "avatar": "6.png"
     },
@@ -183,7 +183,7 @@
       "username": "bmylesg",
       "email": "bmylesg@amazon.com",
       "current_plan": "Basic",
-      "billing": "Manual - Paypal",
+      "phone": "+46 70 789 01 24",
       "status": 2,
       "avatar": ""
     },
@@ -194,7 +194,7 @@
       "username": "bbinerh",
       "email": "bbinerh@mozilla.com",
       "current_plan": "Team",
-      "billing": "Manual - Cash",
+      "phone": "+46 70 890 12 35",
       "status": 2,
       "avatar": "7.png"
     },
@@ -205,7 +205,7 @@
       "username": "tbruntjeni",
       "email": "tbruntjeni@sitemeter.com",
       "current_plan": "Enterprise",
-      "billing": "Manual - Cash",
+      "phone": "+46 70 901 23 46",
       "status": 2,
       "avatar": ""
     },
@@ -216,7 +216,7 @@
       "username": "wburlandj",
       "email": "wburlandj@uiuc.edu",
       "current_plan": "Team",
-      "billing": "Auto Debit",
+      "phone": "+46 70 012 34 57",
       "status": 3,
       "avatar": "6.png"
     },
@@ -227,7 +227,7 @@
       "username": "sdelamainek",
       "email": "sdelamainek@who.int",
       "current_plan": "Basic",
-      "billing": "Auto Debit",
+      "phone": "+46 70 123 45 69",
       "status": 1,
       "avatar": "1.png"
     },
@@ -238,7 +238,7 @@
       "username": "jlysterl",
       "email": "jlysterl@guardian.co.uk",
       "current_plan": "Company",
-      "billing": "Auto Debit",
+      "phone": "+46 70 234 56 80",
       "status": 3,
       "avatar": "8.png"
     },
@@ -249,7 +249,7 @@
       "username": "kskitterelm",
       "email": "kskitterelm@washingtonpost.com",
       "current_plan": "Basic",
-      "billing": "Manual - Paypal",
+      "phone": "+46 70 345 67 81",
       "status": 1,
       "avatar": "3.png"
     },
@@ -260,7 +260,7 @@
       "username": "chatherleighn",
       "email": "chatherleighn@washington.edu",
       "current_plan": "Team",
-      "billing": "Manual - Paypal",
+      "phone": "+46 70 456 78 92",
       "status": 1,
       "avatar": "2.png"
     },
@@ -271,7 +271,7 @@
       "username": "amiccoo",
       "email": "amiccoo@whitehouse.gov",
       "current_plan": "Enterprise",
-      "billing": "Manual - Credit Card",
+      "phone": "+46 70 567 89 03",
       "status": 1,
       "avatar": ""
     },
@@ -282,7 +282,7 @@
       "username": "hhassonp",
       "email": "hhassonp@bizjournals.com",
       "current_plan": "Basic",
-      "billing": "Manual - Cash",
+      "phone": "+46 70 678 90 14",
       "status": 3,
       "avatar": "4.png"
     },
@@ -293,7 +293,7 @@
       "username": "gjacombsq",
       "email": "gjacombsq@jigsy.com",
       "current_plan": "Enterprise",
-      "billing": "Manual - Cash",
+      "phone": "+46 70 789 01 25",
       "status": 2,
       "avatar": "10.png"
     },
@@ -304,7 +304,7 @@
       "username": "bkildayr",
       "email": "bkildayr@mashable.com",
       "current_plan": "Team",
-      "billing": "Manual - Credit Card",
+      "phone": "+46 70 890 12 36",
       "status": 2,
       "avatar": ""
     },
@@ -315,7 +315,7 @@
       "username": "cpinyons",
       "email": "cpinyons@behance.net",
       "current_plan": "Team",
-      "billing": "Auto Debit",
+      "phone": "+46 70 901 23 47",
       "status": 2,
       "avatar": "7.png"
     },
@@ -326,7 +326,7 @@
       "username": "imallindinet",
       "email": "imallindinet@shinystat.com",
       "current_plan": "Team",
-      "billing": "Manual - Credit Card",
+      "phone": "+46 70 012 34 58",
       "status": 1,
       "avatar": ""
     },
@@ -337,7 +337,7 @@
       "username": "gmeinekenu",
       "email": "gmeinekenu@hc360.com",
       "current_plan": "Basic",
-      "billing": "Manual - Cash",
+      "phone": "+46 70 123 45 70",
       "status": 1,
       "avatar": "1.png"
     },
@@ -348,7 +348,7 @@
       "username": "rsnowballv",
       "email": "rsnowballv@indiegogo.com",
       "current_plan": "Basic",
-      "billing": "Manual - Paypal",
+      "phone": "+46 70 234 56 81",
       "status": 1,
       "avatar": "5.png"
     },
@@ -359,7 +359,7 @@
       "username": "remerw",
       "email": "remerw@blogtalkradio.com",
       "current_plan": "Basic",
-      "billing": "Auto Debit",
+      "phone": "+46 70 345 67 82",
       "status": 2,
       "avatar": "8.png"
     },
@@ -370,7 +370,7 @@
       "username": "ofibbensx",
       "email": "ofibbensx@booking.com",
       "current_plan": "Company",
-      "billing": "Manual - Cash",
+      "phone": "+46 70 456 78 93",
       "status": 2,
       "avatar": "4.png"
     },
@@ -381,7 +381,7 @@
       "username": "smacgilfoyley",
       "email": "smacgilfoyley@bigcartel.com",
       "current_plan": "Company",
-      "billing": "Manual - Paypal",
+      "phone": "+46 70 567 89 04",
       "status": 1,
       "avatar": ""
     },
@@ -392,7 +392,7 @@
       "username": "brosebothamz",
       "email": "brosebothamz@tripadvisor.com",
       "current_plan": "Team",
-      "billing": "Manual - Paypal",
+      "phone": "+46 70 678 90 15",
       "status": 3,
       "avatar": ""
     },
@@ -403,7 +403,7 @@
       "username": "shebblethwaite10",
       "email": "shebblethwaite10@arizona.edu",
       "current_plan": "Company",
-      "billing": "Manual - Cash",
+      "phone": "+46 70 789 01 26",
       "status": 3,
       "avatar": "9.png"
     },
@@ -414,7 +414,7 @@
       "username": "mpiccard11",
       "email": "mpiccard11@vimeo.com",
       "current_plan": "Enterprise",
-      "billing": "Manual - Credit Card",
+      "phone": "+46 70 890 12 37",
       "status": 3,
       "avatar": "1.png"
     },
@@ -425,7 +425,7 @@
       "username": "twidmore12",
       "email": "twidmore12@bravesites.com",
       "current_plan": "Team",
-      "billing": "Manual - Cash",
+      "phone": "+46 70 901 23 48",
       "status": 1,
       "avatar": ""
     },
@@ -436,7 +436,7 @@
       "username": "fdesporte13",
       "email": "fdesporte13@omniture.com",
       "current_plan": "Company",
-      "billing": "Manual - Cash",
+      "phone": "+46 70 012 34 59",
       "status": 2,
       "avatar": "6.png"
     },
@@ -447,7 +447,7 @@
       "username": "ebaldetti14",
       "email": "ebaldetti14@theguardian.com",
       "current_plan": "Team",
-      "billing": "Manual - Credit Card",
+      "phone": "+46 70 123 45 71",
       "status": 1,
       "avatar": ""
     },
@@ -458,7 +458,7 @@
       "username": "brossiter15",
       "email": "brossiter15@craigslist.org",
       "current_plan": "Team",
-      "billing": "Manual - Cash",
+      "phone": "+46 70 234 56 82",
       "status": 3,
       "avatar": ""
     },
@@ -469,7 +469,7 @@
       "username": "mmcnirlan16",
       "email": "mmcnirlan16@hc360.com",
       "current_plan": "Basic",
-      "billing": "Manual - Credit Card",
+      "phone": "+46 70 345 67 83",
       "status": 3,
       "avatar": ""
     },
@@ -480,7 +480,7 @@
       "username": "vkoschek17",
       "email": "vkoschek17@abc.net.au",
       "current_plan": "Team",
-      "billing": "Manual - Paypal",
+      "phone": "+46 70 456 78 94",
       "status": 2,
       "avatar": ""
     },
@@ -491,7 +491,7 @@
       "username": "cperot18",
       "email": "cperot18@goo.ne.jp",
       "current_plan": "Team",
-      "billing": "Manual - Paypal",
+      "phone": "+46 70 567 89 05",
       "status": 1,
       "avatar": "3.png"
     },
@@ -502,7 +502,7 @@
       "username": "soffner19",
       "email": "soffner19@mac.com",
       "current_plan": "Enterprise",
-      "billing": "Auto Debit",
+      "phone": "+46 70 678 90 16",
       "status": 1,
       "avatar": ""
     },
@@ -513,7 +513,7 @@
       "username": "kcourtliff1a",
       "email": "kcourtliff1a@bbc.co.uk",
       "current_plan": "Basic",
-      "billing": "Manual - Paypal",
+      "phone": "+46 70 789 01 27",
       "status": 2,
       "avatar": "1.png"
     },
@@ -524,7 +524,7 @@
       "username": "owind1b",
       "email": "owind1b@yandex.ru",
       "current_plan": "Basic",
-      "billing": "Manual - Paypal",
+      "phone": "+46 70 890 12 38",
       "status": 1,
       "avatar": ""
     },
@@ -535,7 +535,7 @@
       "username": "pdurber1c",
       "email": "pdurber1c@gov.uk",
       "current_plan": "Team",
-      "billing": "Manual - Cash",
+      "phone": "+46 70 901 23 49",
       "status": 3,
       "avatar": ""
     },
@@ -546,7 +546,7 @@
       "username": "bkrabbe1d",
       "email": "bkrabbe1d@home.pl",
       "current_plan": "Company",
-      "billing": "Auto Debit",
+      "phone": "+46 70 012 34 60",
       "status": 2,
       "avatar": "9.png"
     }

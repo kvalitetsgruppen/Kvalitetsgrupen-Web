@@ -238,7 +238,7 @@ $(function () {
         {
           // Actions
           targets: -1,
-          title: 'Actions',
+          title: 'Actions1',
           orderable: false,
           searchable: false,
           render: function (data, type, full, meta) {
@@ -525,7 +525,7 @@ $(function () {
         {
           // Actions
           targets: -1,
-          title: 'Actions',
+          title: 'Actions2',
           orderable: false,
           render: function (data, type, full, meta) {
             return (
@@ -608,7 +608,7 @@ $(function () {
         {
           // Actions
           targets: -1,
-          title: 'Actions',
+          title: 'Actions3',
           orderable: false,
           searchable: false,
           render: function (data, type, full, meta) {
@@ -751,7 +751,7 @@ $(function () {
         {
           // Actions
           targets: -1,
-          title: 'Actions',
+          title: 'Actions4',
           orderable: false,
           searchable: false,
           render: function (data, type, full, meta) {

@@ -7,4 +7,7 @@ namespace AspnetCoreMvcStarter.Controllers;
 public class RolesPermission : Controller
 {
   public IActionResult Index() => View();
+
+  public IActionResult Permission() => View();
+
 }

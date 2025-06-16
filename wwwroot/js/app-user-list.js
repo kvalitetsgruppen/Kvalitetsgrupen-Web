@@ -21,7 +21,7 @@ $(function () {
   // Variable declaration for table
   var dt_user_table = $('.datatables-users'),
     select2 = $('.select2'),
-    userView = '/Users/ViewAccount',
+    userView = '/People/ViewAccount',
     statusObj = {
       1: { title: 'Pending', class: 'bg-label-warning' },
       2: { title: 'Active', class: 'bg-label-success' },
@@ -47,7 +47,7 @@ $(function () {
         { data: 'full_name' },
         { data: 'role' },
         { data: 'current_plan' },
-        { data: 'billing' },
+        { data: 'phone' },
         { data: 'status' },
         { data: 'action' }
       ],
@@ -125,11 +125,12 @@ $(function () {
           render: function (data, type, full, meta) {
             var $role = full['role'];
             var roleBadgeObj = {
-              Subscriber: '<i class="bx bx-crown text-primary me-2"></i>',
-              Author: '<i class="bx bx-edit text-warning me-2"></i>',
-              Maintainer: '<i class="bx bx-user text-success me-2"></i>',
-              Editor: '<i class="bx bx-pie-chart-alt text-info me-2"></i>',
-              Admin: '<i class="bx bx-desktop text-danger me-2"></i>'
+              Projektassistent: '<i class="bx bx-crown text-primary me-2"></i>',
+              Utveckling: '<i class="bx bx-edit text-warning me-2"></i>',
+              Programmer: '<i class="bx bx-user text-success me-2"></i>',
+              Revisor: '<i class="bx bx-pie-chart-alt text-info me-2"></i>',
+              'Chief Operating Officer - COO': '<i class="bx bx-desktop text-danger me-2"></i>',
+              'Styrelse ordförande': '<i class="bx bx-shield text-dark me-2"></i>'
             };
             return (
               "<span class='text-truncate d-flex align-items-center text-heading'>" +
@@ -166,7 +167,7 @@ $(function () {
         {
           // Actions
           targets: -1,
-          title: 'Actions',
+          title: 'ÅTGÄRDER',
           searchable: false,
           orderable: false,
           render: function (data, type, full, meta) {
@@ -186,7 +187,7 @@ $(function () {
           }
         }
       ],
-      order: [[2, 'desc']],
+      order: [[0, 'asc']],
       dom:
         '<"row"' +
         '<"col-md-2"<"ms-n2"l>>' +
@@ -349,7 +350,7 @@ $(function () {
         },
         {
           text: '<i class="bx bx-plus bx-sm me-0 me-sm-2"></i><span class="d-none d-sm-inline-block">Add New User</span>',
-          className: 'add-new btn btn-primary',
+          className: 'add-new btn btn-primary ms-auto', // Add ms-auto for right alignment
           attr: {
             'data-bs-toggle': 'offcanvas',
             'data-bs-target': '#offcanvasAddUser'

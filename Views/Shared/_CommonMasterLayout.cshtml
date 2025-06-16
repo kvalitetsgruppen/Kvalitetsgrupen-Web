@@ -62,7 +62,7 @@
 
   <!-- Core Scripts -->
   @await Html.PartialAsync("Sections/_Scripts" + ViewData["frontVar"])
-
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <!-- Vendor Scripts -->
   @RenderSection("VendorScripts", required: false)
 

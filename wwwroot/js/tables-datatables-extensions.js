@@ -52,7 +52,7 @@ $(function () {
         {
           // Actions
           targets: -1,
-          title: 'Actions',
+          title: 'Actions5',
           searchable: false,
           orderable: false,
           render: function (data, type, full, meta) {
@@ -206,7 +206,7 @@ $(function () {
         {
           // Actions
           targets: -1,
-          title: 'Actions',
+          title: 'Actions6',
           orderable: false,
           render: function (data, type, full, meta) {
             return (
@@ -318,7 +318,7 @@ $(function () {
         {
           // Actions
           targets: -1,
-          title: 'Actions',
+          title: 'Actions7',
           searchable: false,
           orderable: false,
           render: function (data, type, full, meta) {

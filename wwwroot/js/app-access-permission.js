@@ -55,12 +55,12 @@ $(function () {
             var $assignedTo = full['assigned_to'],
               $output = '';
             var roleBadgeObj = {
-              Admin: '<a href="' + userList + '"><span class="badge  bg-label-primary me-4">Administrator</span></a>',
-              Manager: '<a href="' + userList + '"><span class="badge  bg-label-warning me-4">Manager</span></a>',
-              Users: '<a href="' + userList + '"><span class="badge  bg-label-success me-4">Users</span></a>',
-              Support: '<a href="' + userList + '"><span class="badge  bg-label-info me-4">Support</span></a>',
+              Admin: '<a href="' + userList + '"><span class="badge bg-label-primary me-4">Administratör</span></a>',
+              Manager: '<a href="' + userList + '"><span class="badge bg-label-warning me-4">Chef</span></a>',
+              Users: '<a href="' + userList + '"><span class="badge bg-label-success me-4">Användare</span></a>',
+              Support: '<a href="' + userList + '"><span class="badge bg-label-info me-4">Support</span></a>',
               Restricted:
-                '<a href="' + userList + '"><span class="badge  bg-label-danger me-4">Restricted User</span></a>'
+              '<a href="' + userList + '"><span class="badge bg-label-danger me-4">Begränsad användare</span></a>'
             };
             for (var i = 0; i < $assignedTo.length; i++) {
               var val = $assignedTo[i];

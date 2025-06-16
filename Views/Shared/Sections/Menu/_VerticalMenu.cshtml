@@ -54,46 +54,46 @@
     <li class='menu-item@(currentPage == "/DocumentList" ? " active" : "") toggle-visibility'>
       <a asp-controller="DocumentList" asp-action="Index" class="menu-link">
         <i class="menu-icon tf-icons bx bx-detail"></i>
-        <div data-i18n="Document List">Document List</div>
+        <div data-i18n="Document List">Dokumentlista</div>
       </a>
     </li>
     <li class='menu-item@(currentPage == "/FileExplorer" ? " active" : "") toggle-visibility'>
       <a asp-controller="FileExplorer" asp-action="Index" class="menu-link d-flex align-items-center">
         <i class="menu-icon tf-icons bx bx-envelope-open me-2"></i> <!-- Open Envelope Icon -->
-        <div data-i18n="File Explorer">File Explorer</div>
+        <div data-i18n="File Explorer">Utforskare</div>
       </a>
     </li>
 
     <li class='menu-item@(currentPage == "/People" ? " active" : "")'>
       <a asp-controller="People" asp-action="Index" class="menu-link d-flex align-items-center">
         <i class="menu-icon tf-icons bx bx-group me-2"></i> <!-- People Icon -->
-        <div data-i18n="People">People</div>
+        <div data-i18n="People">Medarbetare</div>
       </a>
     </li>
 
 
     <li class="menu-header small text-uppercase toggle-visibility" style="color: gray;">
-      <span class="menu-header-text" data-i18n="Apps">Apps</span>
+      <span class="menu-header-text" data-i18n="Apps">APPAR</span>
     </li>
 
     <li class='menu-item@(currentPage == "/PageIncident" ? " active" : "")'>
       <a asp-controller="PageIncident" asp-action="Index" class="menu-link d-flex align-items-center">
         <i class="menu-icon tf-icons bx bx-error me-2"></i> <!-- Triangle with Exclamation Icon -->
-        <div data-i18n="Incident">Incident</div>
+        <div data-i18n="Incident">Avvikelser</div>
       </a>
     </li>
 
     <li class='menu-item@(currentPage == "/ListofLaws" ? " active" : "")'>
       <a asp-controller="ListofLaws" asp-action="Index" class="menu-link d-flex align-items-center">
         <i class="menu-icon tf-icons bx bx-notepad me-2"></i> <!-- Notebook Icon -->
-        <div data-i18n="List of Laws">List of Laws</div>
+        <div data-i18n="List of Laws">Laglista</div>
       </a>
     </li>
 
     <li class='menu-item@(currentPage == "/Suppliers" ? " active" : "")'>
       <a asp-controller="Suppliers" asp-action="Index" class="menu-link d-flex align-items-center">
         <i class="menu-icon tf-icons bx bx-package me-2"></i> <!-- Package Box Icon -->
-        <div data-i18n="Suppliers">Suppliers</div>
+        <div data-i18n="Suppliers">Leverantörer</div>
       </a>
     </li>
 
@@ -103,26 +103,38 @@
     <li class='menu-item@(currentPage == "/Page4" ? " active" : "")'>
       <a asp-controller="Page4" asp-action="Index" class="menu-link d-flex align-items-center">
         <i class="menu-icon tf-icons bx bx-group me-2"></i> <!-- People Icon -->
-        <div data-i18n="Customers">Customers</div>
+        <div data-i18n="Customers">Kunder</div>
       </a>
     </li>
 
 
     <li class="menu-header small text-uppercase toggle-visibility" style="color: gray;">
-      <span class="menu-header-text" data-i18n="SETTINGS">SETTINGS</span>
+      <span class="menu-header-text" data-i18n="SETTINGS">INSTÄLLNINGAR</span>
     </li>
 
     <li class='menu-item@(currentPage == "/RolesPermission" ? " active" : "")'>
       <a asp-controller="RolesPermission" asp-action="Index" class="menu-link d-flex align-items-center">
         <i class="menu-icon tf-icons bx bx-key me-2"></i> <!-- Key Icon -->
-        <div data-i18n="Roles & Permission">Roles & Permission</div>
+        <div data-i18n="Roles & Permission">Roller & Behörighet</div>
       </a>
     </li>
+    <ul class="menu-sub">
+      <li class='menu-item@(currentPage == "/RolesPermission/Roles" ? " active" : "")'>
+        <a asp-controller="Access" asp-action="Roles" class="menu-link">
+          <div data-i18n="Roles">Roles</div>
+        </a>
+      </li>
+      <li class='menu-item@(currentPage == "/RolesPermission/Permission" ? " active" : "")'>
+        <a asp-controller="Access" asp-action="Permission" class="menu-link">
+          <div data-i18n="Permission">Permission</div>
+        </a>
+      </li>
+    </ul>
 
     <li class='menu-item@(currentPage == "/Company" ? " active" : "")'>
       <a asp-controller="Company" asp-action="Index" class="menu-link d-flex align-items-center">
         <i class="menu-icon tf-icons bx bx-buildings me-2"></i> <!-- Office Building Icon -->
-        <div data-i18n="Company">Company</div>
+        <div data-i18n="Company">Företaget</div>
       </a>
     </li>
 
