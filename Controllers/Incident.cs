@@ -17,8 +17,8 @@ namespace AspnetCoreMvcStarter.Controllers;
 
 public class PageIncident : Controller
 {
-  public IActionResult Add() => View();
-  public IActionResult Index() => View();
+  //public IActionResult Add() => View();
+  //public IActionResult Index() => View();
   private readonly IncidentRepository _incidentRepository;
   public PageIncident()
   {
@@ -95,7 +95,7 @@ public class PageIncident : Controller
 
     return View(incident);
   }
-  public IActionResult Print() => View();
+  //public IActionResult Print() => View();
 
   public IActionResult Charts() => View();
   public IActionResult Edit() => View();
